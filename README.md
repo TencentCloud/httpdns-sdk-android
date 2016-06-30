@@ -10,40 +10,25 @@
 
 ## 2. 接入
 ### 2.1. AndroidMainfest配置：
-
->```<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />```
-
->```<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />```
-
->```<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />```
-
->```<uses-permission android:name="android.permission.READ_PHONE_STATE" />```
-
->```<uses-permission android:name="android.permission.INTERNET" />```
-
->```<!-- DNS接收网络切换广播 -->```
-
->```<receiver```
-
->```android:name="com.tencent.msdk.dns. HttpDnsCache$ConnectivityChangeReceiver"```
-
->```android: label="NetworkConnection" >```
-
->```<intent-filter>```
-
->```<action android:name= “android.net. conn. CONNECTIVITY_CHANGE" />```
-
->```</intent-filter>```
-
->``` </receiver>```
-
->```<!-- 添加应用自身的灯塔appkey，如0I3002SDUA14CRW8-->```
-
->```<meta-data```
->```android:name="APPKEY_DENGTA"```
-
->```android: value="XXXXXXXXXXXXXXXX" />```
-
+```xml
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<uses-permission android:name="android.permission.INTERNET" />
+<!-- 添加应用自身的灯塔appkey，如0I3002SDUA14CRW8-->
+<meta-data
+    android:name="APPKEY_DENGTA"
+    android:value="0I100DQEEN1C2BC7" />
+<!-- DNS接收网络切换广播 -->
+<receiver
+    android:name="com.tencent.msdk.dns.HttpDnsCache$ConnectivityChangeReceiver"
+    android:label="NetworkConnection" >
+    <intent-filter>
+        <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+    </intent-filter>
+</receiver>
+```
 >### 注意：
 > ### Android: value的值在提供的版本包key_android.txt文件中，即appkey，请按照此文件中的内容修改，AndroidMainfest中的权限如果已经存在不需要重复添加。
 
