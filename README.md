@@ -21,7 +21,7 @@
 
 >```<uses-permission android:name="android.permission.INTERNET" />```
 
-> <! -- DNS接收网络切换广播 -->
+>```<!-- DNS接收网络切换广播 -->```
 
 >```<receiver```
 
@@ -37,7 +37,7 @@
 
 >``` </receiver>```
 
-> <! —添加应用自身的灯塔appkey，如0I3002SDUA14CRW8-->
+>```<!-- 添加应用自身的灯塔appkey，如0I3002SDUA14CRW8-->```
 
 >```<meta-data```
 >```android:name="APPKEY_DENGTA"```
