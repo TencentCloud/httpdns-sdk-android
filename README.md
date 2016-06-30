@@ -19,7 +19,7 @@
 <!-- 添加应用自身的灯塔appkey，如0I3002SDUA14CRW8-->
 <meta-data
     android:name="APPKEY_DENGTA"
-    android:value="0I100DQEEN1C2BC7" />
+    android:value="XXXXXXXXXXXXXXXX" />
 <!-- DNS接收网络切换广播 -->
 <receiver
     android:name="com.tencent.msdk.dns.HttpDnsCache$ConnectivityChangeReceiver"
