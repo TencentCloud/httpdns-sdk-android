@@ -4,46 +4,45 @@
 ## 1. 功能介绍
 ### MSDKDns的主要功能是为了有效的避免由于运营商传统LocalDns解析导致的无法访问最佳接入点的方案。原理为使用Http加密协议替代传统的DNS协议，整个过程不使用域名，大大减少劫持的可能性。
 
-> ## 注意：
+> ### 注意：
 > ### 如果客户端的业务是与host绑定的，比如是绑定了host的http服务或者是cdn的服务，那么在用HTTPDNS返回的IP替换掉URL中的域名以后，还需要指定下Http头的Host字段。以curl为例，假设你要访问www.qq.com，通过HTTPDNS解析出来的IP为192.168.0.111，那么通过这个方式来调用即可： curl -H "Host:www.qq.com" http://192.168.0.111/aaa.txt.
 
 
 ## 2. 接入
 ### 2.1. AndroidMainfest配置：
 
-```<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />```
+>```<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />```
 
-```<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />```
+>```<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />```
 
-```<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />```
+>```<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />```
 
-```<uses-permission android:name="android.permission.READ_PHONE_STATE" />```
+>```<uses-permission android:name="android.permission.READ_PHONE_STATE" />```
 
-```<uses-permission android:name="android.permission.INTERNET" />```
+>```<uses-permission android:name="android.permission.INTERNET" />```
 
-```<! -- DNS接收网络切换广播 -->```
+>```<! -- DNS接收网络切换广播 -->```
 
-```<receiver```
+>```<receiver```
 
-```android:name="com.tencent.msdk.dns. HttpDnsCache$ConnectivityChangeReceiver"```
+>```android:name="com.tencent.msdk.dns. HttpDnsCache$ConnectivityChangeReceiver"```
 
-```android: label="NetworkConnection" >```
+>```android: label="NetworkConnection" >```
 
-```<intent-filter>```
+>```<intent-filter>```
 
-```<action android:name= “android.net. conn. CONNECTIVITY_CHANGE" />```
+>```<action android:name= “android.net. conn. CONNECTIVITY_CHANGE" />```
 
-```</intent-filter>```
+>```</intent-filter>```
 
-``` </receiver>```
+>``` </receiver>```
 
-```<! —添加应用自身的灯塔appkey，如0I3002SDUA14CRW8-->```
+>```<! —添加应用自身的灯塔appkey，如0I3002SDUA14CRW8-->```
 
-```<meta-data```
+>```<meta-data```
+>```android:name="APPKEY_DENGTA"```
 
-```android:name="APPKEY_DENGTA"```
-
-```android: value="XXXXXXXXXXXXXXXX" />```
+>```android: value="XXXXXXXXXXXXXXXX" />```
 
 >### 注意：
 > ### Android: value的值在提供的版本包key_android.txt文件中，即appkey，请按照此文件中的内容修改，AndroidMainfest中的权限如果已经存在不需要重复添加。
