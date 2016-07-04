@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +21,6 @@ public class MainActivity extends Activity {
 	private String httpDns;
 	private Vector<String> vector = null;
 	private static final int UPDATE_UI = 0;
-	private static String TAG = "WGGetHostByName";
 	private String mDomain = "www.qq.com.";
 
 	@Override
@@ -45,12 +43,11 @@ public class MainActivity extends Activity {
 					public void run() {
 						// mDomain只能传入域名请不要传入ip
 						mDomain = mEdit.getText().toString();
-						Log.i(TAG, "mDomain is " + mDomain);
 						if (mDomain != null) {
 							vector = WGGetHostByName(mDomain);
 							if (vector != null) {
 								httpDns = vector.toString().replace("[", "").replace("]", "");
-								Log.i(TAG, "httpDns is " + httpDns);
+								Logger.i("httpDns is " + httpDns);
 
 							}
 						}
@@ -72,6 +69,7 @@ public class MainActivity extends Activity {
 	public static Vector<String> WGGetHostByName(String domain) {
 		// 调用httpdns解析接口
 		String ips = MSDKDnsResolver.getInstance().getAddrByName(domain);
+		Logger.i("Final to user ips are:" + ips);
 		Vector mVector = new Vector();
 		if (ips != null) {
 			if (ips.contains(";")) {
