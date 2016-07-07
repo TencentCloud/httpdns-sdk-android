@@ -32,6 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.tencent.msdk.dns.WebViewDemo" >
+        </activity>
         <!-- DNS接收网络切换广播 -->
         <receiver
             android:name="com.tencent.msdk.dns.HttpDnsCache$ConnectivityChangeReceiver"

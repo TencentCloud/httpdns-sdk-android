@@ -83,3 +83,4 @@
 > ### Map<String, String> map = new HashMap<String, String>();
 > ### map.put("resultKey", "resultValue");
 > ### UserAction.onUserAction("WGGetHostByNameResult", true, -1, -1, map, true);
+### 3.4 若需要在Webview/H5业务场景下使用HTTPDNS，则可参照com.tencent.msdk.dns.WebViewDemo来直接调用解析即可。
