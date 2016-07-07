@@ -42,8 +42,8 @@
 | 厂商开关        | IS_COOPERATOR     |  腾讯外部应用填"true"腾讯内部应用填"false" |
 | 厂商上报appID   | COOPERATOR_APPID  |  key_android.txt文件中的appkey的值，如果是内部应用接入了MSDK的，可以不填 |
 | SDK日志开关     | IS_DEBUG          |  true为打开日志开关，false为关闭日志 |
-| 服务端分配的ID  | DNS_ID            |  key_android.txt对应的值 |
-| 服务端分配的KEY | DNS_KEY           |  key_android.txt对应的值 |
+| 服务端分配的ID  | DNS_ID            |  key_android.txt对应的值，如果接入msdk的应用可以不填|
+| 服务端分配的KEY | DNS_KEY           |  key_android.txt对应的值，如果接入msdk的应用可以不填|
 
 ### 2.3 接入依赖库：
 > ###（注意：检查应用是否接入过已经接入了腾讯msdk，如果已经接入了腾讯msdk则忽略此步）
@@ -83,4 +83,7 @@
 > ### Map<String, String> map = new HashMap<String, String>();
 > ### map.put("resultKey", "resultValue");
 > ### UserAction.onUserAction("WGGetHostByNameResult", true, -1, -1, map, true);
+<<<<<<< HEAD
 ### 3.4 若需要在Webview/H5业务场景下使用HTTPDNS，则可参照com.tencent.msdk.dns.WebViewDemo来直接调用解析即可。
+=======
+>>>>>>> origin/master
