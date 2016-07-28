@@ -85,3 +85,153 @@
 > ### UserAction.onUserAction("WGGetHostByNameResult", true, -1, -1, map, true);
 
 ### 3.4 若需要在Webview/H5业务场景下使用HTTPDNS，则可参照com.tencent.msdk.dns.WebViewDemo来直接调用解析即可。
+
+## 实践场景
+## 1.Unity接入说明:
+###(1)先初始化HttpDns和灯塔接口：
+###注意：若已接入msdk或则单独接入了腾讯灯塔则不用初始化灯塔。
+> ###private static AndroidJavaObject m_dnsJo;
+> ###	private static AndroidJavaClass sGSDKPlatformClass;
+> ###	public static void Init() {
+> ###		AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+> ###		if (jc == null)
+> ###			return;
+> ###			
+> ###		AndroidJavaObject joactivety = jc.GetStatic<AndroidJavaObject>("currentActivity");
+> ###		if (joactivety == null)
+> ###			return;
+> ###		AndroidJavaObject context = joactivety.Call<AndroidJavaObject>("getApplicationContext");
+> ###		// 初始化HttpDns
+> ###		AndroidJavaObject joDnsClass = new AndroidJavaObject("com.tencent.msdk.dns.MSDKDnsResolver");
+> ###		Debug.Log(" WGGetHostByName ===========" + joDnsClass);
+> ###		if (joDnsClass == null)
+> ###			return;
+> ###		m_dnsJo = joDnsClass.CallStatic<AndroidJavaObject>("getInstance");
+> ###			Debug.Log(" WGGetHostByName ===========" + m_dnsJo);
+> ###		if (m_dnsJo == null)
+> ###			return;
+> ###		m_dnsJo.Call("init", context);
+> ###		// 初始化灯塔
+> ###		AndroidJavaObject joBeaconClass = new AndroidJavaObject("com.tencent.beacon.event.UserAction");
+> ###		if (joBeaconClass == null)
+> ###			return;
+> ###		m_dnsJo.Call("initUserAction", context);
+> ###	}
+
+###(2)调用HttpDns接口解析域名：
+###// 该操作建议在子线程中处理
+> ###public static string GetHttpDnsIP( string strUrl ) {
+> ###		string strIp = string.Empty;
+> ###		// 解析得到IP配置集合
+> ###		strIp = m_dnsJo.Call<string>("getAddrByName", strUrl);
+> ###		Debug.Log( strIp );
+> ###		if( strIp != null )
+> ###		{
+> ###		    // 取第一个
+> ###			string[] strIps = strIp.Split(';');
+> ###			strIp = strIps[0];
+> ###		}
+> ###		return strIp;
+> ###	}
+
+
+
+
+## 2. H5页面内元素HTTP_DNS加载
+###原理：
+###Android原生系统提供了系统API以实现WebView中的网络请求拦截与自定义逻辑注入，我们可以通过上述拦截WebView的各类网络请求，截取URL请求的host，然后调用HttpDns解析该host，通过得到的ip组成新的URL来请求网络地址。
+###实现方法：
+> ###WebSettings webSettings = mWebView.getSettings(); 
+> ###// 使用默认的缓存策略，cache没有过期就用cache 
+> ###webSettings.setCacheMode(WebSettings.LOAD_DEFAULT); 
+> ###// 加载网页图片资源 
+> ###webSettings.setBlockNetworkImage(false); 
+> ###// 支持JavaScript脚本 
+> ###webSettings.setJavaScriptEnabled(true); 
+> ###// 支持缩放 
+> ###webSettings.setSupportZoom(true); 
+> ###mWebView.setWebViewClient(new WebViewClient() { 
+> ###// API 21及之后使用此方法 
+> ###@SuppressLint("NewApi") 
+> ###@Override 
+> ###public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) { 
+> ###if (request != null && request.getUrl() != null && request.getMethod().equalsIgnoreCase("get")) { 
+> ###String scheme = request.getUrl().getScheme().trim(); 
+> ###String url = request.getUrl().toString(); 
+> ###Logger.d("url a: " + url); 
+> ###// HttpDns解析css文件的网络请求及图片请求 
+> ###if ((scheme.equalsIgnoreCase("http") || scheme.equalsIgnoreCase("https")) 
+> ###&& (url.contains(".css") || url.endsWith(".png") || url.endsWith(".jpg") || url .endsWith(".jif"))) { 
+> ###try { 
+> ###URL oldUrl = new URL(url); 
+> ###URLConnection connection = oldUrl.openConnection(); 
+> ###// 获取HttpDns域名解析结果 
+> ###String ips = MSDKDnsResolver.getInstance().getAddrByName(oldUrl.getHost()); 
+> ###if (ips != null) { // 通过HTTPDNS获取IP成功，进行URL替换和HOST头设置 
+> ###Logger.d("HttpDns ips are: " + ips + " for host: " + oldUrl.getHost()); 
+> ###String ip; 
+> ###if (ips.contains(";")) { 
+> ###ip = ips.substring(0, ips.indexOf(";")); 
+> ###} else { 
+> ###ip = ips; 
+> ###} 
+> ###String newUrl = url.replaceFirst(oldUrl.getHost(), ip); 
+> ###Logger.d("newUrl a is: " + newUrl); 
+> ###connection = (HttpURLConnection) new URL(newUrl).openConnection(); // 设置HTTP请求头Host域 
+> ###connection.setRequestProperty("Host", oldUrl.getHost()); 
+> ###} 
+> ###Logger.d("ContentType a: " + connection.getContentType()); 
+> ###return new WebResourceResponse("text/css", "UTF-8", connection.getInputStream()); 
+> ###} catch (MalformedURLException e) { 
+> ###e.printStackTrace(); 
+> ###} catch (IOException e) { 
+> ###e.printStackTrace(); 
+> ###} 
+> ###} 
+> ###} 
+> ###return null; 
+> ###} 
+> ###// API 11至API20使用此方法 
+> ###public WebResourceResponse shouldInterceptRequest(WebView view, String url) { 
+> ###if (!TextUtils.isEmpty(url) && Uri.parse(url).getScheme() != null) { 
+> ###String scheme = Uri.parse(url).getScheme().trim(); 
+> ###Logger.d("url b: " + url); 
+> ###// HttpDns解析css文件的网络请求及图片请求 
+> ###if ((scheme.equalsIgnoreCase("http") || scheme.equalsIgnoreCase("https")) 
+> ###&& (url.contains(".css") || url.endsWith(".png") || url.endsWith(".jpg") || url 
+> ###.endsWith(".jif"))) { 
+> ###try { 
+> ###URL oldUrl = new URL(url); 
+> ###URLConnection connection = oldUrl.openConnection(); 
+> ###// 获取HttpDns域名解析结果 
+> ###String ips = MSDKDnsResolver.getInstance().getAddrByName(oldUrl.getHost()); 
+i> ###f (ips != null) { 
+> ###// 通过HTTPDNS获取IP成功，进行URL替换和HOST头设置 
+> ###Logger.d("HttpDns ips are: " + ips + " for host: " + oldUrl.getHost()); 
+> ###String ip; 
+> ###if (ips.contains(";")) { 
+> ###ip = ips.substring(0, ips.indexOf(";")); 
+> ###} else { 
+> ###ip = ips; 
+> ###} 
+> ###String newUrl = url.replaceFirst(oldUrl.getHost(), ip); 
+> ###Logger.d("newUrl b is: " + newUrl); 
+> ###connection = (HttpURLConnection) new URL(newUrl).openConnection(); 
+> ###// 设置HTTP请求头Host域 
+> ###connection.setRequestProperty("Host", oldUrl.getHost()); 
+> ###} 
+> ###Logger.d("ContentType b: " + connection.getContentType()); 
+> ###return new WebResourceResponse("text/css", "UTF-8", connection.getInputStream()); 
+> ###} catch (MalformedURLException e) { 
+> ###e.printStackTrace(); 
+> ###} catch (IOException e) { 
+> ###e.printStackTrace(); 
+> ###} 
+> ###} 
+> ###} 
+> ###return null; 
+> ###} 
+> ###}); 
+> ###// 加载web资源 
+> ###mWebView.loadUrl(targetUrl); 
+> ###}
