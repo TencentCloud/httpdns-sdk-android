@@ -84,7 +84,6 @@
 > ### map.put("resultKey", "resultValue");
 > ### UserAction.onUserAction("WGGetHostByNameResult", true, -1, -1, map, true);
 
-### 3.4 若需要在Webview/H5业务场景下使用HTTPDNS，则可参照com.tencent.msdk.dns.WebViewDemo来直接调用解析即可。
 
 ## 实践场景
 ## 1.Unity接入说明:
@@ -205,7 +204,7 @@
 > ###URLConnection connection = oldUrl.openConnection(); 
 > ###// 获取HttpDns域名解析结果 
 > ###String ips = MSDKDnsResolver.getInstance().getAddrByName(oldUrl.getHost()); 
-i> ###f (ips != null) { 
+> ###if (ips != null) { 
 > ###// 通过HTTPDNS获取IP成功，进行URL替换和HOST头设置 
 > ###Logger.d("HttpDns ips are: " + ips + " for host: " + oldUrl.getHost()); 
 > ###String ip; 
