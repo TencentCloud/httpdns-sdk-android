@@ -88,7 +88,7 @@
 ## 实践场景
 ## 1.Unity接入说明:
 ###(1)先初始化HttpDns和灯塔接口：
-###注意：若已接入msdk或则单独接入了腾讯灯塔则不用初始化灯塔。
+###注意：若已接入msdk或者单独接入了腾讯灯塔则不用初始化灯塔。
 > ###private static AndroidJavaObject m_dnsJo;
 > ###	private static AndroidJavaClass sGSDKPlatformClass;
 > ###	public static void Init() {

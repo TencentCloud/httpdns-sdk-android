@@ -34,6 +34,10 @@ namespace com.tencent.httpdns {
 		
 	public static string GetHttpDnsIP( string strUrl ) {
 		string strIp = string.Empty;
+		if (AndroidJNI.AttachCurrentThread() != 0)
+        {
+            return null;
+        }
 		// 解析得到IP配置集合
 		strIp = m_dnsJo.Call<string>("getAddrByName", strUrl);
 		Debug.Log( strIp );
