@@ -16,7 +16,7 @@
 <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.INTERNET" />
-<!-- 添加应用自身的灯塔appkey，如0I3002SDUA14CRW8-->
+<!-- 添加应用自身的灯塔appkey，如0I000LT6GW1YGCP7-->
 <meta-data
     android:name="APPKEY_DENGTA"
     android:value="XXXXXXXXXXXXXXXX" />
@@ -40,6 +40,7 @@
 | 修改项          | 修改字段          |  修改方法   |
 |  -------------  |  :-------------:  |  --------:  |
 | 厂商开关        | IS_COOPERATOR     |  腾讯外部应用填"true"腾讯内部应用填"false" |
+| 外部厂商测试开关| IS_COOPERATOR_TEST|  腾讯外部应用如果需要使用测试环境来测试则填"true"，直接使用正式环境填"false"，腾讯应用不用关注该项  |
 | 厂商上报appID   | COOPERATOR_APPID  |  key_android.txt文件中的appkey的值，如果是内部应用接入了MSDK的，可以不填 |
 | SDK日志开关     | IS_DEBUG          |  true为打开日志开关，false为关闭日志 |
 | 服务端分配的ID  | DNS_ID            |  key_android.txt对应的值|
