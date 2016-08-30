@@ -62,7 +62,7 @@ public class WebViewDemo extends Activity {
 							URLConnection connection = oldUrl.openConnection();
 							// 获取HttpDns域名解析结果
 							String ips = MSDKDnsResolver.getInstance().getAddrByName(oldUrl.getHost());
-							if (ips != null) { // 通过HTTPDNS获取IP成功，进行URL替换和HOST头设置
+							if (ips != null) {
 								Logger.d("HttpDns ips are: " + ips + " for host: " + oldUrl.getHost());
 								String ip;
 								if (ips.contains(";")) {
@@ -70,6 +70,7 @@ public class WebViewDemo extends Activity {
 								} else {
 									ip = ips;
 								}
+								// 进行URL替换和HOST头设置
 								String newUrl = url.replaceFirst(oldUrl.getHost(), ip);
 								Logger.d("newUrl a is: " + newUrl);
 								connection = (HttpURLConnection) new URL(newUrl).openConnection(); // 设置HTTP请求头Host域

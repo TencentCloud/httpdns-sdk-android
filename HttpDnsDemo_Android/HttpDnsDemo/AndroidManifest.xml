@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="APPKEY_DENGTA"
-            android:value="0I100DQEEN1C2BC7" />
+            android:value="0I000LT6GW1YGCP7" />
 
         <activity
             android:name="com.tencent.msdk.dns.MainActivity"
