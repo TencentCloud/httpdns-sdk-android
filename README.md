@@ -39,12 +39,12 @@
 
 | 修改项          | 修改字段          |  修改方法   |
 |  -------------  |  :-------------:  |  --------:  |
-| 厂商开关        | IS_COOPERATOR     |  腾讯外部应用填"true"腾讯内部应用填"false" |
-| 外部厂商测试开关| IS_COOPERATOR_TEST|  腾讯外部应用如果需要使用测试环境来测试则填"true"，直接使用正式环境填"false"，腾讯应用不用关注该项  |
-| 厂商上报appID   | COOPERATOR_APPID  |  key_android.txt文件中的appkey的值，如果是内部应用接入了MSDK的，可以不填 |
-| SDK日志开关     | IS_DEBUG          |  true为打开日志开关，false为关闭日志 |
-| 服务端分配的ID  | DNS_ID            |  key_android.txt对应的值|
-| 服务端分配的KEY | DNS_KEY           |  key_android.txt对应的值|
+| 厂商开关        | IS_COOPERATOR     |  外部应用填"true"腾讯应用填"false" |
+| 外部厂商测试开关| IS_COOPERATOR_TEST|  如果想先体验测试则填"true"，直接使用正式环境填"false"，正式上线时必须为false  |
+| 厂商上报appID   | COOPERATOR_APPID  |  接入后申请，由系统或管理员分配；如果应用接入了MSDK的，可以不填 |
+| SDK日志开关     | IS_DEBUG          |  true为打开日志开关，false为关闭日志，建议测试阶段打开，正式上线时关闭 |
+| 服务端分配的ID  | DNS_ID            |  接入申请后，由系统或管理员分配|
+| 服务端分配的KEY | DNS_KEY           |  接入申请后，由系统或管理员分配|
 
 ### 2.3 接入依赖库：
 > ###（注意：检查应用是否接入过已经接入了腾讯msdk，如果已经接入了腾讯msdk则忽略此步）
