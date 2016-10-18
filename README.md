@@ -51,21 +51,21 @@
 > ### 将HttpDnsDemo\libs\ beacon_android_v1.9.4.jar拷贝至游戏libs相应的位置；
 
 ### 2.4 HttpDns Java接口调用：
->/**
-> ##* 初始化HttpDns
-> ###* @param context  传入Application Context
-> ###*/
-> ### MSDKDnsResolver.getInstance().init(MainActivity.this.getApplicationContext());
-
 > ###/**
-> ##* 初始化灯塔
+> ## * 初始化灯塔
 > ###*注意：如果已接入腾讯msdk并且初始化了msdk，则不用再次初始化灯塔
 > ###* @param this 传入主Activity或者Application Context
 > ###*/
-> ### UserAction.initUserAction(MainActivity.this. getApplicationContext ()); 
+> ### UserAction.initUserAction(MainActivity.this. getApplicationContext ());
 
 > ###/**
-> ##* HttpDns同步解析接口
+> ## * 初始化HttpDns
+> ###* @param context  传入Application Context
+> ###*/
+> ### MSDKDnsResolver.getInstance().init(MainActivity.this.getApplicationContext()); 
+
+> ###/**
+> ## * HttpDns同步解析接口
 > ###* 注意：domain只能传入域名不能传入IP，返回结果需要做非空判断
 > ###* 首先查询缓存，若存在则返回结果，若不存在则进行同步域名解析请求，
 > ###* 解析完成返回最新解析结果，若解析失败返回空对象
