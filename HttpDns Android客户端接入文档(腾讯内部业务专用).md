@@ -71,8 +71,26 @@
 
 ## 3．注意事项：
 ### 3.1 建议调用HttpDns同步接口时最好在子线程调用getAddrByName(domain)接口。
-### 3.2 如果客户端的业务是与host绑定的，比如是绑定了host的http服务或者是cdn的服务，那么在用HTTPDNS返回的IP替换掉URL中的域名以后，还需要指定下Http头的Host字段。以curl为例，假设你要访问www.qq.com，通过HTTPDNS解析出来的IP为192.168.0.111，那么通过这个方式来调用即可： curl -H "Host:www.qq.com" http://192.168.0.111/aaa.txt.
-
+### 3.2 如果客户端的业务是与host绑定的，比如是绑定了host的http服务或者是cdn的服务，那么在用HTTPDNS返回的IP替换掉URL中的域名以后，还需要指定下Http头的Host字段。
+	- 以URLConnection为例： 
+		URL oldUrl = new URL(url); 
+        URLConnection connection = oldUrl.openConnection(); 
+        // 获取HttpDns域名解析结果 
+        String ips = MSDKDnsResolver.getInstance().getAddrByName(oldUrl.getHost()); 
+        if (ips != null) { // 通过HTTPDNS获取IP成功，进行URL替换和HOST头设置 
+            String ip; 
+            if (ips.contains(";")) { 
+                ip = ips.substring(0, ips.indexOf(";")); 
+            } else { 
+                ip = ips; 
+            } 
+            String newUrl = url.replaceFirst(oldUrl.getHost(), ip); 
+            connection = (HttpURLConnection) new URL(newUrl).openConnection(); // 设置HTTP请求头Host域名 
+            connection.setRequestProperty("Host", oldUrl.getHost()); 
+        } 
+	- 以curl为例：
+		假设你要访问www.qq.com，通过HTTPDNS解析出来的IP为192.168.0.111，那么通过这个方式来调用即可： 
+		curl -H "Host:www.qq.com" http://192.168.0.111/aaa.txt.
 
 
 ## 实践场景
