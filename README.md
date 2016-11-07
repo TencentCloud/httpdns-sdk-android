@@ -10,16 +10,12 @@
 | MSDKDnsUnityDemo | Unity工程使用HTTPDNS api示例Demo | 使用Unity引擎的业务 |
 | HttpDns Android客户端接入文档（腾讯内部业务专用）.doc | HttpDns Android客户端接入文档（腾讯内部业务专用） | 腾讯内部业务 |
 | HttpDns Android客户端接入文档（腾讯内部业务专用）.md | HttpDns Android客户端接入文档（腾讯内部业务专用） | 腾讯内部业务 |
-| HttpDns Android客户端接入文档（腾讯外部客户专用）.doc | HttpDns Android客户端接入文档（腾讯外部客户专用） | 腾讯外部客户 |
+| HttpDns Android客户端接入文档（腾讯云客户专用）.doc | HttpDns Android客户端接入文档（腾讯云客户专用） | 腾讯云客户 |
 | README.md | HTTPDNS Android客户端接入文档 | 腾讯外部客户 |
 | VERSION.md | HTTPDNS Android SDK历史版本修改记录 | SDK开发维护人员 |
 
 ## 1. 功能介绍
 ### HttpDns的主要功能是为了有效的避免由于运营商传统LocalDns解析导致的无法访问最佳接入点的方案。原理为使用Http加密协议替代传统的DNS协议，整个过程不使用域名，大大减少劫持的可能性。
-
-> ### 注意：
-> ### 如果客户端的业务是与host绑定的，比如是绑定了host的http服务或者是cdn的服务，那么在用HTTPDNS返回的IP替换掉URL中的域名以后，还需要指定下Http头的Host字段。以curl为例，假设你要访问www.qq.com，通过HTTPDNS解析出来的IP为192.168.0.111，那么通过这个方式来调用即可： curl -H "Host:www.qq.com" http://192.168.0.111/aaa.txt.
-
 
 ## 2. 接入
 ### 2.1. AndroidMainfest配置：
@@ -86,8 +82,10 @@
 	*/
 	String ips = MSDKDnsResolver.getInstance(). getAddrByName(domain);
 
-## 3．备注：
+## 3．注意事项
 ### 3.1 建议调用HttpDns同步接口时最好在子线程调用getAddrByName(domain)接口。
+### 3.2 如果客户端的业务是与host绑定的，比如是绑定了host的http服务或者是cdn的服务，那么在用HTTPDNS返回的IP替换掉URL中的域名以后，还需要指定下Http头的Host字段。以curl为例，假设你要访问www.qq.com，通过HTTPDNS解析出来的IP为192.168.0.111，那么通过这个方式来调用即可： curl -H "Host:www.qq.com" http://192.168.0.111/aaa.txt.
+
 
 
 ## 实践场景
