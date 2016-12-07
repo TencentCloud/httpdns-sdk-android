@@ -13,6 +13,8 @@
 | HttpDns Android客户端接入文档（腾讯云客户专用）.doc | HttpDns Android客户端接入文档（腾讯云客户专用） | 腾讯云客户 |
 | README.md | HTTPDNS Android客户端接入文档 | 腾讯外部客户 |
 | VERSION.md | HTTPDNS Android SDK历史版本修改记录 | SDK开发维护人员 |
+| 安卓配置文件修改示例.docx | 安卓配置文件修改示例 | SDK开发维护人员 |
+| 数据报表申请方法.docx | 数据报表申请方法 | SDK开发维护人员 |
 
 ## 1. 功能介绍
 ### HttpDns的主要功能是为了有效的避免由于运营商传统LocalDns解析导致的无法访问最佳接入点的方案。原理为使用Http加密协议替代传统的DNS协议，整个过程不使用域名，大大减少劫持的可能性。
