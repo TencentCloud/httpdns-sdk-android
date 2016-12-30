@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using com.tencent.httpdns;
+using System.Threading;
 
 public class ClickEvent : MonoBehaviour {
 
@@ -21,8 +22,13 @@ public class ClickEvent : MonoBehaviour {
 			print("输入为空，使用默认域名：www.qq.com");
 			result.text = "输入为空，使用默认域名：www.qq.com";
 		}
-		string ips = HttpDns.GetHostByName(domainStr);
-		print ("WGGetHostByName ips " + ips);
+		// 使用子线程来调用HttpDns耗时解析接口
+		string ips = null;
+		Thread thread = new Thread(new ThreadStart(() => {
+			ips = HttpDns.GetHostByName(domainStr);
+			print ("WGGetHostByName result ips are " + ips); 
+		}));
+		thread.Start();
 #if UNITY_ANDROID
 		result.text = ips;
 #endif

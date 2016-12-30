@@ -40,6 +40,7 @@ namespace com.tencent.httpdns {
         }
 		// 解析得到IP配置集合
 		strIp = m_dnsJo.Call<string>("getAddrByName", strUrl);
+		AndroidJNI.DetachCurrentThread(); // ***如果游戏在UI线程调用HttpDns接口解析需要去掉该行***
 		Debug.Log( strIp );
 		if( strIp != null )
 		{
