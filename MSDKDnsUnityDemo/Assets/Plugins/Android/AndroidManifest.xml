@@ -19,10 +19,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <meta-data
-            android:name="APPKEY_DENGTA"
-            android:value="0I100DQEEN1C2BC7" />
-
         <activity android:name="com.unity3d.player.UnityPlayerActivity"
                   android:label="@string/app_name"
                   android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
