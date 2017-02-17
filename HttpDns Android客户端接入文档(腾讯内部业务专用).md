@@ -21,7 +21,7 @@
     </intent-filter>
 </receiver>
 ```
->### 注意：
+>###
 > ### 
 
 ### 2.2 接入HttpDns库：
