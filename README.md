@@ -36,8 +36,8 @@
     </intent-filter>
 </receiver>
 ```
->#### 注意：
-> ### android: value的值注册后由系统或管理员分配，请按照此文件中的内容修改，AndroidMainfest中的权限如果已经存在不需要重复添加。
+>####
+> ###
 
 ### 2.2 接入HttpDns库：
 > ### 将HttpDnsLibs\msdkhttpdns_xxxx.jar库文件拷贝至应用libs相应的位置，将HttpDnsLibs\dnsconfig.ini配置文件拷贝到应用Android\assets目录下；
