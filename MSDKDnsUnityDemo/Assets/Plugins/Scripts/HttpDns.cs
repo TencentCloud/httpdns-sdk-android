@@ -25,11 +25,6 @@ namespace com.tencent.httpdns {
 		if (m_dnsJo == null)
 			return;
 		m_dnsJo.Call("init", context);
-		// 初始化灯塔
-		AndroidJavaObject joBeaconClass = new AndroidJavaObject("com.tencent.beacon.event.UserAction");
-		if (joBeaconClass == null)
-			return;
-		m_dnsJo.Call("initUserAction", context);
 	}
 		
 	public static string GetHttpDnsIP( string strUrl ) {

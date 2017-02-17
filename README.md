@@ -27,6 +27,7 @@
 <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.INTERNET" />
+<!-- DNS接收网络切换广播 -->
 <receiver
     android:name="com.tencent.msdk.dns.HttpDnsCache$ConnectivityChangeReceiver"
     android:label="NetworkConnection" >
@@ -34,11 +35,6 @@
         <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
     </intent-filter>
 </receiver>
-<!-- 添加应用自身的灯塔appkey，如0I000LT6GW1YGCP7-->
-<meta-data
-    android:name="APPKEY_DENGTA"
-    android:value="XXXXXXXXXXXXXXXX" />
-<!-- DNS接收网络切换广播 -->
 ```
 >#### 注意：
 > ### android: value的值注册后由系统或管理员分配，请按照此文件中的内容修改，AndroidMainfest中的权限如果已经存在不需要重复添加。
@@ -61,13 +57,6 @@
 > ### 将HttpDnsLibs\beacon_android_vxxxx.jar灯塔库拷贝至游戏libs相应的位置；
 
 ### 2.4 HttpDns Java接口调用：
-	/**
-	* 初始化灯塔
-	*注意：如果已接入腾讯msdk并且初始化了msdk，则不用再次初始化灯塔
-	* @param this 传入主Activity或者Application Context
-	*/
-	UserAction.initUserAction(MainActivity.this. getApplicationContext ());
-
 	/**
 	* 初始化HttpDns
 	* @param context  传入Application Context
@@ -133,11 +122,6 @@
 		if (m_dnsJo == null)
 			return;
 		m_dnsJo.Call("init", context);
-		// 初始化灯塔
-		AndroidJavaObject joBeaconClass = new AndroidJavaObject("com.tencent.beacon.event.UserAction");
-		if (joBeaconClass == null)
-			return;
-		m_dnsJo.Call("initUserAction", context);
 	}
 
 ###(2)调用HttpDns接口解析域名：
