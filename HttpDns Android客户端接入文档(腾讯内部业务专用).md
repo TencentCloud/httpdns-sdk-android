@@ -151,7 +151,7 @@
 			Logger.d("url a: " + url); 
 			// HttpDns解析css文件的网络请求及图片请求 
 			if ((scheme.equalsIgnoreCase("http") || scheme.equalsIgnoreCase("https")) 
-			&& (url.contains(".css") || url.endsWith(".png") || url.endsWith(".jpg") || url .endsWith(".jif"))) { 
+			&& (url.contains(".css") || url.endsWith(".png") || url.endsWith(".jpg") || url .endsWith(".gif"))) { 
 			try { 
 				URL oldUrl = new URL(url); 
 				URLConnection connection = oldUrl.openConnection(); 
@@ -188,7 +188,7 @@
 	Logger.d("url b: " + url); 
 	// HttpDns解析css文件的网络请求及图片请求 
 	if ((scheme.equalsIgnoreCase("http") || scheme.equalsIgnoreCase("https")) 
-	&& (url.contains(".css") || url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jif"))) { 
+	&& (url.contains(".css") || url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".gif"))) { 
 		try { 
 			URL oldUrl = new URL(url); 
 			URLConnection connection = oldUrl.openConnection(); 
