@@ -35,8 +35,8 @@
 | 外部厂商测试开关 | IS_COOPERATOR_TEST| 此项不用修改 |
 | 厂商上报appID   | COOPERATOR_APPID  | 如果已接入了MSDK不需要填入任何值，否则填入灯塔appkey |
 | SDK日志开关     | IS_DEBUG          | true为打开日志开关，false为关闭日志，建议测试阶段打开，正式上线时关闭 |
-| 服务端分配的ID  | DNS_ID            | 1 |
-| 服务端分配的KEY | DNS_KEY           | >srW/8;& |
+| 服务端分配的ID  | DNS_ID            | 注册后由系统或管理员分配 |
+| 服务端分配的KEY | DNS_KEY           | 注册后由系统或管理员分配 |
 
 ### 2.3 接入依赖库：（注意：已经接入了msdk的应用忽略此步）
 > ### 将HttpDnsLibs\beacon_android_vxxxx.jar灯塔库拷贝至游戏libs相应的位置；
