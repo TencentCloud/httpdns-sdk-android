@@ -100,8 +100,8 @@
 
 ## 实践场景
 ## 1.Unity接入说明:
-###(1)先初始化HttpDns和灯塔接口：
-###注意：若已接入msdk或者单独接入了腾讯灯塔则不用初始化灯塔。
+### (1)先初始化HttpDns和灯塔接口：
+### 注意：若已接入msdk或者单独接入了腾讯灯塔则不用初始化灯塔。
 	private static AndroidJavaObject m_dnsJo;
 	private static AndroidJavaClass sGSDKPlatformClass;
 	public static void Init() {
@@ -124,7 +124,7 @@
 		m_dnsJo.Call("init", context);
 	}
 
-###(2)调用HttpDns接口解析域名：
+### (2)调用HttpDns接口解析域名：
 	// 该操作建议在子线程中处理
 	public static string GetHttpDnsIP( string strUrl ) {
 		string strIp = string.Empty;
@@ -144,9 +144,9 @@
 
 
 ## 2. H5页面内元素HTTP_DNS加载
-###原理：
-###Android原生系统提供了系统API以实现WebView中的网络请求拦截与自定义逻辑注入，我们可以通过上述拦截WebView的各类网络请求，截取URL请求的host，然后调用HttpDns解析该host，通过得到的ip组成新的URL来请求网络地址。
-###实现方法：
+### 原理：
+### Android原生系统提供了系统API以实现WebView中的网络请求拦截与自定义逻辑注入，我们可以通过上述拦截WebView的各类网络请求，截取URL请求的host，然后调用HttpDns解析该host，通过得到的ip组成新的URL来请求网络地址。
+### 实现方法：
 	WebSettings webSettings = mWebView.getSettings(); 
 	// 使用默认的缓存策略，cache没有过期就用cache 
 	webSettings.setCacheMode(WebSettings.LOAD_DEFAULT); 
