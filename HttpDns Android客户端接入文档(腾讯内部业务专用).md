@@ -25,7 +25,7 @@
 > ### 
 
 ### 2.2 接入HttpDns库：
-> ### 将HttpDnsLibs\msdkhttpdns_xxxx.jar库文件拷贝至应用libs相应的位置，将HttpDnsLibs\dnsconfig.ini配置文件拷贝到应用Android\assets目录下；
+> ### 将HttpDnsLibs\httpdns_xxxx.jar库文件拷贝至应用libs相应的位置，将HttpDnsLibs\dnsconfig.ini配置文件拷贝到应用Android\assets目录下；
 > ### 注意：
 > ### 拷贝dnsconfig.ini文件前，先修改此文件里的相关配置，但不要改变文件原有的编码格式，具体修改方法如下：
 
@@ -42,11 +42,23 @@
 > ### 将HttpDnsLibs\beacon_android_vxxxx.jar灯塔库拷贝至游戏libs相应的位置；
 
 ### 2.4 HttpDns Java接口调用：
+
+    // 初始化灯塔：如果已经接入MSDK或者IMSDK或者单独接入了腾讯灯塔(Beacon)则不需再初始化该接口
+    try {
+        // 设置灯塔App_Key，注：部分灯塔低版本使用setAppKey(MainActivity.this,"0I000LT6GW1YGCP7")接口
+        // UserAction.setAppKey(MainActivity.this, "0I000LT6GW1YGCP7");
+        // ***注意：这里业务需要输入自己的灯塔AppKey
+        UserAction.setAppkey("0I000LT6GW1YGCP7");
+        UserAction.initUserAction(MainActivity.this);
+    } catch (Exception e) {
+	    Logger.e("init beacon error:" + e.getMessage());
+    }
+
 	/**
 	* 初始化HttpDns
-	* @param context  传入Application Context
+	* @param Activity  传入Application Activity
 	*/
-	MSDKDnsResolver.getInstance().init(MainActivity.this.getApplicationContext()); 
+	MSDKDnsResolver.getInstance().init(MainActivity.this); 
 
 	/**
 	* HttpDns同步解析接口

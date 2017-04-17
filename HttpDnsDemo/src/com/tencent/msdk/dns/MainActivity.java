@@ -2,6 +2,8 @@ package com.tencent.msdk.dns;
 
 import java.util.Vector;
 
+import com.tencent.beacon.event.UserAction;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -12,8 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.tencent.beacon.event.UserAction;
 
 public class MainActivity extends Activity {
 	private EditText mEdit;
@@ -33,10 +33,18 @@ public class MainActivity extends Activity {
 		mButton = (Button) findViewById(R.id.button);
 		h5Button = (Button) findViewById(R.id.h5button);
 
-		// 初始化HttpDns
-		MSDKDnsResolver.getInstance().init(MainActivity.this.getApplicationContext());
-		// 初始化灯塔（注意：如果已接入MSDK或者灯塔，检查是否已初始化，以免重复操作）
-		UserAction.initUserAction(MainActivity.this.getApplicationContext());
+		// 初始化灯塔：如果已经接入MSDK或者IMSDK或者单独接入了腾讯灯塔(Beacon)则不需做此步操作
+		try {
+			// 设置灯塔App_Key，注：部分灯塔低版本使用setAppKey(MainActivity.this,"0I000LT6GW1YGCP7")接口
+			// UserAction.setAppKey(MainActivity.this, "0I000LT6GW1YGCP7");
+			UserAction.setAppkey("0I000LT6GW1YGCP7"); // ***注意：这里业务需要输入自己的灯塔AppKey
+			UserAction.initUserAction(MainActivity.this);
+		} catch (Exception e) {
+			Logger.e("init beacon error:" + e.getMessage());
+		}
+		// 初始化HttpDns，注：传入当前Activity
+		MSDKDnsResolver.getInstance().init(MainActivity.this);
+
 		// 普通HttpDns解析
 		mButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
