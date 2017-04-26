@@ -234,3 +234,57 @@
 	}}); 
 	// 加载web资源 
 	mWebView.loadUrl(targetUrl); 
+	
+## 3. OkHttp+HttpDns场景
+    // 方案仅做参考
+    String url = "http://www.qq.com";
+    Uri uri = Uri.parse(url);
+    String ip = MSDKDnsResolver.getInstance().getAddrByName("www.qq.com"); // HttpDns解析域名
+    if (ip != null) {
+	    if (ip.contains(";")) {
+	        ip = ip.substring(0, ip.indexOf(";"));
+	}
+    } else {
+	    return;
+    }
+    String mURL = uri.toString().replaceFirst(uri.getHost(), ip);
+
+    // OkHttp GET Method
+    try {
+	    String mGetURL = mURL; // 根据业务自己的服务器地址来封装
+	    Request request = new Request.Builder().url(mGetURL).build();
+	    OkHttpClient client = new OkHttpClient();
+	    Response response = client.newCall(request).execute();
+	    String mGetResult = response.body().string();
+	    System.out.println("OkHttp Get Method result:" + mGetResult);
+    } catch (Exception e) {
+	    e.printStackTrace();
+    }
+
+    // OkHttp POST Method
+    try {
+        String mPostURL = mURL; // 根据业务自己的服务器地址来封装
+	    MediaType mType = MediaType.parse("application/json; charset=utf-8");
+	    // 封装请求参数，根据业务实际情况封装
+	    JSONObject jsonData = new JSONObject();
+	    jsonData.put("os", "Android");
+	    jsonData.put("api_version", 23);
+	    jsonData.put("version", "0.0.1");
+	    ......
+	    String data = jsonData.toString();
+	    RequestBody body = RequestBody.create(mType, data);
+	    Request request = new Request.Builder().url(mPostURL).post(body).build();
+	    OkHttpClient client = new OkHttpClient();
+	    Response response = client.newCall(request).execute();
+	    String mPostResult = response.body().string();
+	    System.out.println("OkHttp POST Method result:" + mPostResult);
+    } catch (Exception e) {
+	    e.printStackTrace();
+    }
+
+## 4. 检测本地是否使用了HTTP代理，如果使用了HTTP代理，建议不要使用HTTPDNS做域名解析
+    String host = System.getProperty("http.proxyHost");
+    String port= System.getProperty("http.proxyPort");
+    if (host != null && port != null) {
+	    // 使用了本地代理模式
+	}
