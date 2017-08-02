@@ -55,7 +55,7 @@
     }
 
 	/**
-	* 初始化HttpDns
+###	* 初始化HttpDns：如果接入了MSDK，需要初始化完MSDK后再初始化HttpDns
 	* @param Activity  传入Application Activity
 	*/
 	MSDKDnsResolver.getInstance().init(MainActivity.this); 
