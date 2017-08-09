@@ -33,7 +33,7 @@
 |  ------------- |  :-------------:  |  --------:  |
 | 厂商开关        | IS_COOPERATOR     | 填"false" |
 | 外部厂商测试开关 | IS_COOPERATOR_TEST| 此项不用修改 |
-| 厂商上报appID   | COOPERATOR_APPID  | 如果已接入了MSDK不需要填入任何值，否则填入灯塔appkey |
+| 厂商上报appID   | COOPERATOR_APPID  | 注册后由系统或管理员分配，已接入MSDK业务为手Q AppId |
 | SDK日志开关     | IS_DEBUG          | true为打开日志开关，false为关闭日志，建议测试阶段打开，正式上线时关闭 |
 | 服务端分配的ID  | DNS_ID            | 注册后由系统或管理员分配 |
 | 服务端分配的KEY | DNS_KEY           | 注册后由系统或管理员分配 |
@@ -55,10 +55,16 @@
     }
 
 	/**
-###	* 初始化HttpDns：如果接入了MSDK，需要初始化完MSDK后再初始化HttpDns
+    * 初始化HttpDns：如果接入了MSDK，建议初始化MSDK后再初始化HttpDns
 	* @param Activity  传入Application Activity
 	*/
 	MSDKDnsResolver.getInstance().init(MainActivity.this); 
+	
+	/**
+    * 设置OpenId，已接入MSDK业务直接传MSDK OpenId，其它业务传“NULL”
+	* @param String openId
+	*/
+	MSDKDnsResolver.getInstance().WGSetDnsOpenId("10000");
 
 	/**
 	* HttpDns同步解析接口
@@ -70,7 +76,7 @@
 	*/
 	String ips = MSDKDnsResolver.getInstance(). getAddrByName(domain);
 
-## 3．注意事项：
+## 3．注意事项
 ### 3.1 建议调用HttpDns同步接口时最好在子线程调用getAddrByName(domain)接口。
 ### 3.2 如果客户端的业务是与host绑定的，比如是绑定了host的http服务或者是cdn的服务，那么在用HTTPDNS返回的IP替换掉URL中的域名以后，还需要指定下Http头的Host字段。
 	- 以URLConnection为例： 
@@ -92,6 +98,7 @@
 	- 以curl为例：
 		假设你要访问www.qq.com，通过HTTPDNS解析出来的IP为192.168.0.111，那么通过这个方式来调用即可： 
 		curl -H "Host:www.qq.com" http://192.168.0.111/aaa.txt.
+
 
 
 ## 实践场景
@@ -234,7 +241,7 @@
 	}}); 
 	// 加载web资源 
 	mWebView.loadUrl(targetUrl); 
-	
+
 ## 3. OkHttp+HttpDns场景
     // 方案仅做参考
     String url = "http://www.qq.com";
@@ -295,7 +302,6 @@
 	connection.setConnectTimeout(mTimeOut); // 设置连接超时
 	connection.setReadTimeout(mTimeOut); // 设置读流超时
 	connection.connect();
-
 	
 ## 5. 检测本地是否使用了HTTP代理，如果使用了HTTP代理，建议不要使用HTTPDNS做域名解析
     String host = System.getProperty("http.proxyHost");

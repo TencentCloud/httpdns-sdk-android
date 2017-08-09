@@ -5,9 +5,7 @@
 
 | 目录名称       | 说明           | 适用范围  |
 | ------------- |-------------| -------------|
-| HttpDnsDemo | Android客户端使用HttpDns api示例Demo | 所有业务 |
 | HttpDnsLibs | HttpDns Android SDK库目录 | 所有业务 |
-| MSDKDnsUnityDemo | Unity工程使用HTTPDNS api示例Demo | 使用Unity引擎的业务 |
 | HttpDns Android客户端接入文档（腾讯内部业务专用）.doc | HttpDns Android客户端接入文档（腾讯内部业务专用） | 腾讯内部业务 |
 | HttpDns Android客户端接入文档（腾讯内部业务专用）.md | HttpDns Android客户端接入文档（腾讯内部业务专用） | 腾讯内部业务 |
 | HttpDns Android客户端接入文档（腾讯云客户专用）.doc | HttpDns Android客户端接入文档（腾讯云客户专用） | 腾讯云客户 |
@@ -48,7 +46,7 @@
 |  ------------- |  :-------------:  |  --------:  |
 | 厂商开关        | IS_COOPERATOR     | 填"true" |
 | 外部厂商测试开关 | IS_COOPERATOR_TEST| 测试环境填"true"，直接使用正式环境填"false"，正式上线时必须为false  |
-| 厂商上报appID   | COOPERATOR_APPID  | 注册后由系统或管理员分配 |
+| 厂商上报appID   | COOPERATOR_APPID  | 注册后由系统或管理员分配，已接入MSDK业务为手Q AppId |
 | SDK日志开关     | IS_DEBUG          | true为打开日志开关，false为关闭日志，建议测试阶段打开，正式上线时关闭 |
 | 服务端分配的ID  | DNS_ID            | 注册后由系统或管理员分配 |
 | 服务端分配的KEY | DNS_KEY           | 注册后由系统或管理员分配 |
@@ -70,10 +68,16 @@
     }
 
 	/**
-###	* 初始化HttpDns：如果接入了MSDK，需要初始化完MSDK后再初始化HttpDns
+    * 初始化HttpDns：如果接入了MSDK，建议初始化MSDK后再初始化HttpDns
 	* @param Activity  传入Application Activity
 	*/
 	MSDKDnsResolver.getInstance().init(MainActivity.this); 
+	
+	/**
+    * 设置OpenId，已接入MSDK业务直接传MSDK OpenId，其它业务传“NULL”
+	* @param String openId
+	*/
+	MSDKDnsResolver.getInstance().WGSetDnsOpenId("10000");
 
 	/**
 	* HttpDns同步解析接口
