@@ -303,6 +303,7 @@
     }
 
 ## 4. Https场景
+### 4.1. 普通Https场景
     String url = "https://httpdns域名解析得到的IP/d?dn=&clientip=1&ttl=1&id=128"; // 业务自己的请求连接
 	HttpsURLConnection connection = (HttpsURLConnection) new URL(url).openConnection();
 	connection.setRequestProperty("Host", "原解析的域名");
@@ -316,6 +317,140 @@
 	connection.setReadTimeout(mTimeOut); // 设置读流超时
 	connection.connect();
 	
+### 4.2. Https SNI（单IP多HTTPS证书）场景
+	String url = "https://" + ip + "/pghead/xxxxxxx/140"; // 用HttpDns解析得到的IP封装业务的请求URL
+		HttpsURLConnection sniConn = null;
+		try {
+			sniConn = (HttpsURLConnection) new URL(url).openConnection();
+			// 设置HTTP请求头Host域
+			sniConn.setRequestProperty("Host", "原解析的域名");
+			sniConn.setConnectTimeout(3000);
+			sniConn.setReadTimeout(3000);
+			sniConn.setInstanceFollowRedirects(false);
+			// 定制SSLSocketFactory来带上请求域名 ***关键步骤
+			SniSSLSocketFactory sslSocketFactory = new SniSSLSocketFactory(sniConn);
+			sniConn.setSSLSocketFactory(sslSocketFactory);
+			// 验证主机名和服务器验证方案是否匹配？
+			HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+				@Override
+				public boolean verify(String hostname, SSLSession session) {
+					return HttpsURLConnection.getDefaultHostnameVerifier().verify("原解析的域名", session);
+				}
+			};
+			sniConn.setHostnameVerifier(hostnameVerifier);
+			int code = sniConn.getResponseCode();// Network block
+			if (code >= 300 && code < 400) {
+				// 临时重定向和永久重定向location的大小写有区分
+				String location = sniConn.getHeaderField("Location");
+				if (location == null) {
+					location = sniConn.getHeaderField("location");
+				}
+				if (!(location.startsWith("http://") || location.startsWith("https://"))) {
+					URL originalUrl = new URL(url);
+					location = originalUrl.getProtocol() + "://" + "原解析的域名" + location;
+				}
+				showSniHttpsDemo(location, "原解析的域名");
+			} else {
+				// 业务自己处理服务端响应结果
+				DataInputStream dis = new DataInputStream(sniConn.getInputStream());
+				int len;
+				byte[] buff = new byte[4096];
+				StringBuilder response = new StringBuilder();
+				while ((len = dis.read(buff)) != -1) {
+					response.append(new String(buff, 0, len));
+				}
+				dis.close();
+				Log.d("WGGetHostByName", "response: " + response.toString());
+			}
+		} catch (Exception e) {
+			Log.w("WGGetHostByName", e.getMessage());
+		} finally {
+			if (sniConn != null) {
+				sniConn.disconnect();
+			}
+		}
+		
+### 定制SSLSocketFactory：
+    class SniSSLSocketFactory extends SSLSocketFactory {
+	private HttpsURLConnection conn;
+
+	public SniSSLSocketFactory(HttpsURLConnection conn) {
+		this.conn = conn;
+	}
+
+	@Override
+	public Socket createSocket() throws IOException {
+		return null;
+	}
+
+	@Override
+	public Socket createSocket(String host, int port) throws IOException, UnknownHostException {
+		return null;
+	}
+
+	@Override
+	public Socket createSocket(String host, int port, InetAddress localHost, int localPort) throws IOException, UnknownHostException {
+		return null;
+	}
+
+	@Override
+	public Socket createSocket(InetAddress host, int port) throws IOException {
+		return null;
+	}
+
+	@Override
+	public Socket createSocket(InetAddress address, int port, InetAddress localAddress, int localPort) throws IOException {
+		return null;
+	}
+
+	@Override
+	public String[] getDefaultCipherSuites() {
+		return new String[0];
+	}
+
+	@Override
+	public String[] getSupportedCipherSuites() {
+		return new String[0];
+	}
+
+	@Override
+	public Socket createSocket(Socket socket, String host, int port, boolean autoClose) throws IOException {
+		String mHost = this.conn.getRequestProperty("Host");
+		if (mHost == null) {
+			mHost = host;
+		}
+		Log.i("WGGetHostByName", "customized createSocket host is: " + mHost);
+		InetAddress address = socket.getInetAddress();
+		if (autoClose) {
+			socket.close();
+		}
+		SSLCertificateSocketFactory sslSocketFactory = (SSLCertificateSocketFactory) SSLCertificateSocketFactory.getDefault(0);
+		SSLSocket ssl = (SSLSocket) sslSocketFactory.createSocket(address, port);
+		ssl.setEnabledProtocols(ssl.getSupportedProtocols());
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+			Log.i("WGGetHostByName", "Setting SNI hostname");
+			sslSocketFactory.setHostname(ssl, mHost);
+		} else {
+			Log.d("WGGetHostByName", "No documented SNI support on Android <4.2, trying with reflection");
+			try {
+				java.lang.reflect.Method setHostnameMethod = ssl.getClass().getMethod("setHostname", String.class);
+				setHostnameMethod.invoke(ssl, mHost);
+			} catch (Exception e) {
+				Log.w("WGGetHostByName", "SNI not useable", e);
+			}
+		}
+		// verify hostname and certificate
+		SSLSession session = ssl.getSession();
+		HostnameVerifier mHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+		if (!mHostnameVerifier.verify(mHost, session))
+			throw new SSLPeerUnverifiedException("Cannot verify hostname: " + mHost);
+		Log.i("WGGetHostByName",
+				"Established " + session.getProtocol() + " connection with " + session.getPeerHost() + " using " + session.getCipherSuite());
+		return ssl;
+	}
+    }
+
 ## 5. 检测本地是否使用了HTTP代理，如果使用了HTTP代理，建议不要使用HTTPDNS做域名解析
     String host = System.getProperty("http.proxyHost");
     String port= System.getProperty("http.proxyPort");
