@@ -75,6 +75,7 @@
 	
 	/**
     * 设置OpenId，已接入MSDK业务直接传MSDK OpenId，其它业务传“NULL”
+	* 注意：该接口返回值是布尔型，在Unity或者Cocos下调用请注意处理返回类型
 	* @param String openId
 	*/
 	MSDKDnsResolver.getInstance().WGSetDnsOpenId("10000");
