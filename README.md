@@ -58,10 +58,8 @@
 
     // 初始化灯塔：如果已经接入MSDK或者IMSDK或者单独接入了腾讯灯塔(Beacon)则不需再初始化该接口
     try {
-        // 设置灯塔App_Key，注：部分灯塔低版本使用setAppKey(MainActivity.this,"0I000LT6GW1YGCP7")接口
-        // UserAction.setAppKey(MainActivity.this, "0I000LT6GW1YGCP7");
         // ***注意：这里业务需要输入自己的灯塔AppKey
-        UserAction.setAppkey("0I000LT6GW1YGCP7");
+        UserAction.setAppKey("0I000LT6GW1YGCP7");
         UserAction.initUserAction(MainActivity.this);
     } catch (Exception e) {
 	    Logger.e("init beacon error:" + e.getMessage());
