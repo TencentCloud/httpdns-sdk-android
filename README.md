@@ -48,8 +48,8 @@
 | 外部厂商测试开关 | IS_COOPERATOR_TEST| 测试环境填"true"，直接使用正式环境填"false"，正式上线时必须为false  |
 | 厂商上报appID   | COOPERATOR_APPID  | 注册后由系统或管理员分配，已接入MSDK业务为手Q AppId |
 | SDK日志开关     | IS_DEBUG          | true为打开日志开关，false为关闭日志，建议测试阶段打开，正式上线时关闭 |
-| 服务端分配的ID  | DNS_ID            | 注册后由系统或管理员分配 |
-| 服务端分配的KEY | DNS_KEY           | 注册后由系统或管理员分配 |
+| 服务端分配的ID  | DNS_ID            | 云官网注册获得 |
+| 服务端分配的KEY | DNS_KEY           | 云官网注册获得 |
 
 ### 2.3 接入依赖库：（注意：已经接入了腾讯灯塔(beacon)组件的应用忽略此步）
 > ### 将HttpDnsLibs\beacon_android_vxxxx.jar灯塔库拷贝至游戏libs相应的位置；
