@@ -46,7 +46,7 @@
 |  ------------- |  :-------------:  |  --------:  |
 | 厂商开关        | IS_COOPERATOR     | 填"true" |
 | 外部厂商测试开关 | IS_COOPERATOR_TEST| 测试环境填"true"，直接使用正式环境填"false"，正式上线时必须为false  |
-| 厂商上报appID   | COOPERATOR_APPID  | 注册后由系统或管理员分配，已接入MSDK业务为手Q AppId |
+| 厂商上报appID   | COOPERATOR_APPID  | 云官网注册获得 |
 | SDK日志开关     | IS_DEBUG          | true为打开日志开关，false为关闭日志，建议测试阶段打开，正式上线时关闭 |
 | 服务端分配的ID  | DNS_ID            | 云官网注册获得 |
 | 服务端分配的KEY | DNS_KEY           | 云官网注册获得 |

@@ -33,7 +33,7 @@
 |  ------------- |  :-------------:  |  --------:  |
 | 厂商开关        | IS_COOPERATOR     | 填"false" |
 | 外部厂商测试开关 | IS_COOPERATOR_TEST| 此项不用修改 |
-| 厂商上报appID   | COOPERATOR_APPID  | 注册后由系统或管理员分配，已接入MSDK业务为手Q AppId |
+| 厂商上报appID   | COOPERATOR_APPID  | 已接入MSDK业务为手Q AppId，否则从云官网注册获得 |
 | SDK日志开关     | IS_DEBUG          | true为打开日志开关，false为关闭日志，建议测试阶段打开，正式上线时关闭 |
 | 服务端分配的ID  | DNS_ID            | 腾讯内部业务不用关注 |
 | 服务端分配的KEY | DNS_KEY           | 腾讯内部业务不用关注 |
