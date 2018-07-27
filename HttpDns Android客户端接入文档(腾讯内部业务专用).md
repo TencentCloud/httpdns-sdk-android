@@ -32,7 +32,6 @@
 | 修改项          | 修改字段          |  修改方法   |
 |  ------------- |  :-------------:  |  --------:  |
 | 厂商开关        | IS_COOPERATOR     | 填"false" |
-| 外部厂商测试开关 | IS_COOPERATOR_TEST| 此项不用修改 |
 | 厂商上报appID   | COOPERATOR_APPID  | 已接入MSDK业务为手Q AppId，否则从云官网注册获得 |
 | SDK日志开关     | IS_DEBUG          | true为打开日志开关，false为关闭日志，建议测试阶段打开，正式上线时关闭 |
 | 服务端分配的ID  | DNS_ID            | 腾讯内部业务不用关注 |
@@ -45,7 +44,7 @@
 
     // 初始化灯塔：如果已经接入MSDK或者IMSDK或者单独接入了腾讯灯塔(Beacon)则不需再初始化该接口
     try {
-        // ***注意：这里业务需要输入自己的灯塔AppKey
+        // ***注意：这里业务需要输入自己的灯塔AppID
         UserAction.setAppKey("0I000LT6GW1YGCP7");
         UserAction.initUserAction(MainActivity.this);
     } catch (Exception e) {
