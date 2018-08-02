@@ -140,10 +140,13 @@
 
 ### (2)调用HttpDns接口解析域名：
 	// 该操作建议在子线程中处理
+	// 注意在子线程中调用需要在调用前后做AttachCurrentThread和DetachCurrentThread处理 
 	public static string GetHttpDnsIP( string strUrl ) {
 		string strIp = string.Empty;
+		AndroidJNI.AttachCurrentThread(); // 子线程中调用需要加上
 		// 解析得到IP配置集合
 		strIp = m_dnsJo.Call<string>("getAddrByName", strUrl);
+		AndroidJNI.DetachCurrentThread(); // 子线程中调用需要加上
 		Debug.Log( strIp );
 		if( strIp != null )
 		{
