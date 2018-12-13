@@ -16,15 +16,13 @@ HttpDns是为了有效的避免由于运营商传统LocalDns解析导致的无�
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 <!-- 灯塔 -->
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
 ### 接入HttpDns
 - 将HttpDnsLibs\HttpDns_xxxx.jar拷贝至应用libs相应位置
-- 将HttpDnsLibs\dnsconfig.ini拷贝至应用assets目录下
-	- **注意**：拷贝dnsconfig.ini前，先按照提示修改文件里的相关配置，但不要改变文件原有的编码格式
 ### 接入灯塔
 - 将HttpDnsLibs\beacon_android_xxxx.jar拷贝至应用libs相应位置
 	- **注意**：已经接入了腾讯灯塔(beacon)组件的应用忽略此步
@@ -43,8 +41,13 @@ try {
  * 初始化HttpDns：如果接入了MSDK，建议初始化MSDK后再初始化HttpDns
  * 
  * @param context 应用上下文，最好传入ApplicationContext
+ * @param appkey 业务appkey，腾讯云官网（https://console.cloud.tencent.com/httpdns）申请获得，用于上报
+ * @param dnsid dns解析id，腾讯云官网（https://console.cloud.tencent.com/httpdns）申请获得，用于域名解析鉴权
+ * @param dnskey dns解析key，腾讯云官网（https://console.cloud.tencent.com/httpdns）申请获得，用于域名解析鉴权
+ * @param debug 是否开启debug日志，true为打开，false为关闭，建议测试阶段打开，正式上线时关闭
+ * @param timeout dns请求超时时间，单位ms，建议设置1000
  */
-MSDKDnsResolver.getInstance().init(MainActivity.this.getApplicationContext()); 
+MSDKDnsResolver.getInstance().init(MainActivity.this, appkey, dnsid, dnskey, debug, timeout); 
 	
 /**
  * 设置OpenId，已接入MSDK业务直接传MSDK OpenId，其它业务传“NULL”
@@ -65,7 +68,7 @@ MSDKDnsResolver.getInstance().WGSetDnsOpenId("10000");
 String ips = MSDKDnsResolver.getInstance().getAddrByName(domain);
 ```
 ### 接入验证
-dnsconfig.ini中打开debug开关，过滤TAG为“WGGetHostByName”的日志。查看到LocalDns（日志上为ldns_ip）和HttpDns（日志上为hdns_ip）相关日志，则可以确认接入无误
+init接口中debug参数传入true，过滤TAG为“WGGetHostByName”的日志。查看到LocalDns（日志上为ldns_ip）和HttpDns（日志上为hdns_ip）相关日志，则可以确认接入无误
 ### 注意事项
 - getAddrByName是耗时同步接口，应当在子线程调用
 - 如果客户端的业务是与host绑定的，比如是绑定了host的http服务或者是cdn的服务，那么在用HttpDns返回的IP替换掉URL中的域名以后，还需要指定下Http头的Host字段
@@ -128,6 +131,7 @@ mOkHttpClient =
         })
         .build();
 ```
+**注意**：实现Dns接口意味着所有经由当前OkHttpClient实例处理的网络请求都会经过HttpDns。如果业务只有少部分域名是需要通过HttpDns进行解析的，建议在调用HttpDns域名解析接口之前先进行过滤。
 ### Retrofit + OkHttp
 Retrofit实际上是一个基于OkHttp，对接口做了一层封装桥接的lib。因此只需要仿OkHttp的接入方式，定制Retrofit中的OkHttpClient，即可方便地接入HttpDns。
 示例如下：
@@ -467,7 +471,7 @@ private static final class SniSSLSocketFactory extends SSLSocketFactory {
 - 调用getAddrByName接口解析域名
 	示例如下：
 	```
-	// 该操作建议在子线程中处理
+	// 该操作建议在子线程中或使用Coroutine处理
 	// 注意在子线程中调用需要在调用前后做AttachCurrentThread和DetachCurrentThread处理 
 	public static string GetHttpDnsIP(string strUrl) {
 		string strIp = string.Empty;
