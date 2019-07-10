@@ -1,0 +1,26 @@
+var DATA = [
+      { id:0, label:"com.tencent.msdk.dns", link:"com/tencent/msdk/dns/package-summary.html", type:"package" },
+      { id:1, label:"com.tencent.msdk.dns.DnsConfig", link:"com/tencent/msdk/dns/DnsConfig.html", type:"class" },
+      { id:2, label:"com.tencent.msdk.dns.DnsConfig.Builder", link:"com/tencent/msdk/dns/DnsConfig.Builder.html", type:"class" },
+      { id:3, label:"com.tencent.msdk.dns.DnsService", link:"com/tencent/msdk/dns/DnsService.html", type:"class" },
+      { id:4, label:"com.tencent.msdk.dns.ILookedUpListener", link:"com/tencent/msdk/dns/ILookedUpListener.html", type:"class" },
+      { id:5, label:"com.tencent.msdk.dns.MSDKDnsResolver", link:"com/tencent/msdk/dns/MSDKDnsResolver.html", type:"class" },
+      { id:6, label:"com.tencent.msdk.dns.base.executor", link:"com/tencent/msdk/dns/base/executor/package-summary.html", type:"package" },
+      { id:7, label:"com.tencent.msdk.dns.base.executor.DnsExecutors", link:"com/tencent/msdk/dns/base/executor/DnsExecutors.html", type:"class" },
+      { id:8, label:"com.tencent.msdk.dns.base.executor.DnsExecutors.ExecutorSupplier", link:"com/tencent/msdk/dns/base/executor/DnsExecutors.ExecutorSupplier.html", type:"class" },
+      { id:9, label:"com.tencent.msdk.dns.base.log", link:"com/tencent/msdk/dns/base/log/package-summary.html", type:"package" },
+      { id:10, label:"com.tencent.msdk.dns.base.log.ILogNode", link:"com/tencent/msdk/dns/base/log/ILogNode.html", type:"class" },
+      { id:11, label:"com.tencent.msdk.dns.core", link:"com/tencent/msdk/dns/core/package-summary.html", type:"package" },
+      { id:12, label:"com.tencent.msdk.dns.core.IpSet", link:"com/tencent/msdk/dns/core/IpSet.html", type:"class" },
+      { id:13, label:"com.tencent.msdk.dns.core.LookupResult", link:"com/tencent/msdk/dns/core/LookupResult.html", type:"class" },
+      { id:14, label:"com.tencent.msdk.dns.core.local", link:"com/tencent/msdk/dns/core/local/package-summary.html", type:"package" },
+      { id:15, label:"com.tencent.msdk.dns.core.local.LocalDns", link:"com/tencent/msdk/dns/core/local/LocalDns.html", type:"class" },
+      { id:16, label:"com.tencent.msdk.dns.core.local.LocalDns.Statistics", link:"com/tencent/msdk/dns/core/local/LocalDns.Statistics.html", type:"class" },
+      { id:17, label:"com.tencent.msdk.dns.core.rest.share", link:"com/tencent/msdk/dns/core/rest/share/package-summary.html", type:"package" },
+      { id:18, label:"com.tencent.msdk.dns.core.rest.share.AbsRestDns", link:"com/tencent/msdk/dns/core/rest/share/AbsRestDns.html", type:"class" },
+      { id:19, label:"com.tencent.msdk.dns.core.rest.share.AbsRestDns.Statistics", link:"com/tencent/msdk/dns/core/rest/share/AbsRestDns.Statistics.html", type:"class" },
+      { id:20, label:"com.tencent.msdk.dns.core.stat", link:"com/tencent/msdk/dns/core/stat/package-summary.html", type:"package" },
+      { id:21, label:"com.tencent.msdk.dns.core.stat.AbsStatistics", link:"com/tencent/msdk/dns/core/stat/AbsStatistics.html", type:"class" },
+      { id:22, label:"com.tencent.msdk.dns.core.stat.StatisticsMerge", link:"com/tencent/msdk/dns/core/stat/StatisticsMerge.html", type:"class" }
+
+    ];

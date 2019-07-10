@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.tencent.httpdns.network">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application>
+
+        <uses-library
+                android:name="org.apache.http.legacy"
+                android:required="false"/>
+
+        <provider
+                android:name=".VolleyHelperInitProvider"
+                android:authorities="com.tencent.httpdns.volley"
+                android:enabled="true"
+                android:exported="false">
+        </provider>
+    </application>
+</manifest>

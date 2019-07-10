@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply from: '../config.gradle'
+
+android {
+    compileSdkVersion compileSdkVerzion
+
+    defaultConfig {
+        minSdkVersion minSdkVerzion
+        targetSdkVersion targetSdkVerzion
+
+        versionCode 100
+        versionName "0.1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "USE_HTTP_DNS", "true"
+            buildConfigField "String", "APP_ID", "\"$appId\""
+            buildConfigField "String", "DNS_ID", "\"$dnsId\""
+            buildConfigField "String", "DNS_KEY", "\"$dnsKey\""
+
+            minifyEnabled false
+        }
+
+        release {
+            buildConfigField "boolean", "USE_HTTP_DNS", "true"
+            buildConfigField "String", "APP_ID", "\"$appId\""
+            buildConfigField "String", "DNS_ID", "\"$dnsId\""
+            buildConfigField "String", "DNS_KEY", "\"$dnsKey\""
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.create("release")
+            signingConfig.initWith(buildTypes.debug.signingConfig)
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test:runner:$runnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "androidx.core:core-ktx:$ktxVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$ktxCoroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ktxCoroutinesVersion"
+
+    implementation project(path: ':base')
+
+    implementation(name: 'HTTPDNS_Android_V3.1.0a_S14867', ext: 'aar')
+}

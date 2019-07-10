@@ -1,0 +1,1345 @@
+<api>
+<package name="com.tencent.msdk.dns"
+>
+<class name="DnsConfig"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<field name="appId"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="asyncLookupDomains"
+ type="java.util.Set"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="blockFirst"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="channel"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="executorSupplier"
+ type="com.tencent.msdk.dns.base.executor.DnsExecutors.ExecutorSupplier"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="initBuiltInReporters"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="logLevel"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="logNodes"
+ type="java.util.List"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="lookedUpListener"
+ type="com.tencent.msdk.dns.ILookedUpListener"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="lookupExtra"
+ type="LookupExtra"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="preLookupDomains"
+ type="java.util.Set"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="protectedDomains"
+ type="java.util.Set"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="timeoutMills"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="userId"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="DnsConfig.Builder"
+ extends="java.lang.Object"
+ abstract="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Builder"
+ type="com.tencent.msdk.dns.DnsConfig.Builder"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="appId"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="appId" type="java.lang.String">
+</parameter>
+</method>
+<method name="asyncLookupDomains"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="domains" type="java.lang.String...">
+</parameter>
+</method>
+<method name="blockFirst"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="build"
+ return="com.tencent.msdk.dns.DnsConfig"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="dnsId"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="dnsId" type="java.lang.String">
+</parameter>
+</method>
+<method name="dnsKey"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="dnsKey" type="java.lang.String">
+</parameter>
+</method>
+<method name="executorSupplier"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="executorSupplier" type="com.tencent.msdk.dns.base.executor.DnsExecutors.ExecutorSupplier">
+</parameter>
+</method>
+<method name="http"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="initBuiltInReporters"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="logLevel"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="logLevel" type="int">
+</parameter>
+</method>
+<method name="logNode"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="logNode" type="com.tencent.msdk.dns.base.log.ILogNode">
+</parameter>
+</method>
+<method name="lookedUpListener"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="lookedUpListener" type="com.tencent.msdk.dns.ILookedUpListener">
+</parameter>
+</method>
+<method name="nonBlockFirst"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="notInitBuiltInReporters"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="preLookupDomains"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="domains" type="java.lang.String...">
+</parameter>
+</method>
+<method name="protectedDomains"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="domains" type="java.lang.String...">
+</parameter>
+</method>
+<method name="timeoutMills"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeoutMills" type="int">
+</parameter>
+</method>
+<method name="udp"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="userId"
+ return="com.tencent.msdk.dns.DnsConfig.Builder"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userId" type="java.lang.String">
+</parameter>
+</method>
+</class>
+<class name="DnsService"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="DnsService"
+ type="com.tencent.msdk.dns.DnsService"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getAddrsByName"
+ return="com.tencent.msdk.dns.core.IpSet"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+</method>
+<method name="getAddrsByName"
+ return="com.tencent.msdk.dns.core.IpSet"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+<parameter name="useHttp" type="boolean">
+</parameter>
+</method>
+<method name="getAddrsByName"
+ return="com.tencent.msdk.dns.core.IpSet"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+<parameter name="useHttp" type="boolean">
+</parameter>
+<parameter name="fallback2Local" type="boolean">
+</parameter>
+</method>
+<method name="init"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="android.content.Context">
+</parameter>
+<parameter name="config" type="com.tencent.msdk.dns.DnsConfig">
+</parameter>
+</method>
+<method name="setUserId"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="true"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="userId" type="java.lang.String">
+</parameter>
+</method>
+</class>
+<interface name="ILookedUpListener"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="onAsyncLookedUp"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+<parameter name="lookupResult" type="com.tencent.msdk.dns.core.LookupResult&lt;com.tencent.msdk.dns.core.stat.StatisticsMerge&gt;">
+</parameter>
+</method>
+<method name="onLookedUp"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+<parameter name="lookupResult" type="com.tencent.msdk.dns.core.LookupResult&lt;com.tencent.msdk.dns.core.stat.StatisticsMerge&gt;">
+</parameter>
+</method>
+<method name="onPreLookedUp"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+<parameter name="lookupResult" type="com.tencent.msdk.dns.core.LookupResult&lt;com.tencent.msdk.dns.core.stat.StatisticsMerge&gt;">
+</parameter>
+</method>
+</interface>
+<class name="MSDKDnsResolver"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="MSDKDnsResolver"
+ type="com.tencent.msdk.dns.MSDKDnsResolver"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="WGSetDnsOpenId"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="openId" type="java.lang.String">
+</parameter>
+</method>
+<method name="addLogNode"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="logNode" type="com.tencent.msdk.dns.base.log.ILogNode">
+</parameter>
+</method>
+<method name="getAddrByName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="domain" type="java.lang.String">
+</parameter>
+</method>
+<method name="getAddrByName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="domain" type="java.lang.String">
+</parameter>
+<parameter name="useHttp" type="boolean">
+</parameter>
+</method>
+<method name="getInstance"
+ return="com.tencent.msdk.dns.MSDKDnsResolver"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="init"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="android.content.Context">
+</parameter>
+<parameter name="appkey" type="java.lang.String">
+</parameter>
+<parameter name="debug" type="boolean">
+</parameter>
+<parameter name="timeout" type="int">
+</parameter>
+</method>
+<method name="init"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="android.content.Context">
+</parameter>
+<parameter name="appkey" type="java.lang.String">
+</parameter>
+<parameter name="debug" type="boolean">
+</parameter>
+<parameter name="timeout" type="int">
+</parameter>
+<parameter name="useHttp" type="boolean">
+</parameter>
+</method>
+<method name="init"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="android.content.Context">
+</parameter>
+<parameter name="appkey" type="java.lang.String">
+</parameter>
+<parameter name="dnsid" type="java.lang.String">
+</parameter>
+<parameter name="dnskey" type="java.lang.String">
+</parameter>
+<parameter name="debug" type="boolean">
+</parameter>
+<parameter name="timeout" type="int">
+</parameter>
+</method>
+<method name="init"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="android.content.Context">
+</parameter>
+<parameter name="appkey" type="java.lang.String">
+</parameter>
+<parameter name="dnsid" type="java.lang.String">
+</parameter>
+<parameter name="dnskey" type="java.lang.String">
+</parameter>
+<parameter name="debug" type="boolean">
+</parameter>
+<parameter name="timeout" type="int">
+</parameter>
+<parameter name="useHttp" type="boolean">
+</parameter>
+</method>
+</class>
+</package>
+<package name="com.tencent.msdk.dns.base.executor"
+>
+<class name="DnsExecutors"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="DnsExecutors"
+ type="com.tencent.msdk.dns.base.executor.DnsExecutors"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<interface name="DnsExecutors.ExecutorSupplier"
+ abstract="true"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="get"
+ return="java.util.concurrent.Executor"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+</package>
+<package name="com.tencent.msdk.dns.base.log"
+>
+<interface name="ILogNode"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="println"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="priority" type="int">
+</parameter>
+<parameter name="tag" type="java.lang.String">
+</parameter>
+<parameter name="msg" type="java.lang.String">
+</parameter>
+<parameter name="tr" type="java.lang.Throwable">
+</parameter>
+</method>
+</interface>
+</package>
+<package name="com.tencent.msdk.dns.core"
+>
+<class name="IpSet"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="IpSet"
+ type="com.tencent.msdk.dns.core.IpSet"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="v4Ips" type="java.lang.String[]">
+</parameter>
+<parameter name="v6Ips" type="java.lang.String[]">
+</parameter>
+</constructor>
+<constructor name="IpSet"
+ type="com.tencent.msdk.dns.core.IpSet"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ips" type="java.lang.String[]">
+</parameter>
+</constructor>
+<field name="EMPTY"
+ type="com.tencent.msdk.dns.core.IpSet"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ips"
+ type="java.lang.String[]"
+ transient="false"
+ volatile="false"
+ value="null"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="v4Ips"
+ type="java.lang.String[]"
+ transient="false"
+ volatile="false"
+ value="null"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="v6Ips"
+ type="java.lang.String[]"
+ transient="false"
+ volatile="false"
+ value="null"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="LookupResult"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="LookupResult"
+ type="com.tencent.msdk.dns.core.LookupResult"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ips" type="java.lang.String[]">
+</parameter>
+<parameter name="stat" type="Statistics">
+</parameter>
+</constructor>
+<constructor name="LookupResult"
+ type="com.tencent.msdk.dns.core.LookupResult"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ipSet" type="com.tencent.msdk.dns.core.IpSet">
+</parameter>
+<parameter name="stat" type="Statistics">
+</parameter>
+</constructor>
+<field name="ipSet"
+ type="com.tencent.msdk.dns.core.IpSet"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="stat"
+ type="Statistics"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+</package>
+<package name="com.tencent.msdk.dns.core.local"
+>
+<class name="LocalDns"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="LocalDns"
+ type="com.tencent.msdk.dns.core.local.LocalDns"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="LocalDns.Statistics"
+ extends="com.tencent.msdk.dns.core.stat.AbsStatistics"
+ abstract="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Statistics"
+ type="com.tencent.msdk.dns.core.local.LocalDns.Statistics"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<field name="NOT_LOOKUP"
+ type="com.tencent.msdk.dns.core.local.LocalDns.Statistics"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+</package>
+<package name="com.tencent.msdk.dns.core.rest.share"
+>
+<class name="AbsRestDns"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="AbsRestDns"
+ type="com.tencent.msdk.dns.core.rest.share.AbsRestDns"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="AbsRestDns.Statistics"
+ extends="com.tencent.msdk.dns.core.stat.AbsStatistics"
+ abstract="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Statistics"
+ type="com.tencent.msdk.dns.core.rest.share.AbsRestDns.Statistics"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<field name="NOT_LOOKUP"
+ type="com.tencent.msdk.dns.core.rest.share.AbsRestDns.Statistics"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="asyncLookup"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="cached"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="clientIp"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="errorCode"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="errorMsg"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="netChangeLookup"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="retryTimes"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ttl"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+</package>
+<package name="com.tencent.msdk.dns.core.stat"
+>
+<class name="AbsStatistics"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="AbsStatistics"
+ type="com.tencent.msdk.dns.core.stat.AbsStatistics"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="endLookup"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="lookupSuccess"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="startLookup"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<field name="costTimeMills"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ips"
+ type="java.lang.String[]"
+ transient="false"
+ volatile="false"
+ value="null"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="startLookupTimeMills"
+ type="long"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="StatisticsMerge"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="StatisticsMerge"
+ type="com.tencent.msdk.dns.core.stat.StatisticsMerge"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="android.content.Context">
+</parameter>
+</constructor>
+<method name="lookupSuccess"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="merge"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="dns" type="IDns">
+</parameter>
+<parameter name="stat" type="Statistics">
+</parameter>
+</method>
+<method name="statContext"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="lookupContext" type="&lt;any&gt;">
+</parameter>
+</method>
+<method name="statResult"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ipSet" type="com.tencent.msdk.dns.core.IpSet">
+</parameter>
+</method>
+<field name="channel"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="curNetStack"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="hostname"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ipSet"
+ type="com.tencent.msdk.dns.core.IpSet"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="localDnsStat"
+ type="com.tencent.msdk.dns.core.local.LocalDns.Statistics"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="lookupSuccess"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="netType"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="restInet6DnsStat"
+ type="com.tencent.msdk.dns.core.rest.share.AbsRestDns.Statistics"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="restInetDnsStat"
+ type="com.tencent.msdk.dns.core.rest.share.AbsRestDns.Statistics"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ssid"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+</package>
+</api>

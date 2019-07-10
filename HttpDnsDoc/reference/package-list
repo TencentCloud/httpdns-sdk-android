@@ -1,0 +1,8 @@
+com.tencent.msdk.dns
+com.tencent.msdk.dns.base.executor
+com.tencent.msdk.dns.base.log
+com.tencent.msdk.dns.core
+com.tencent.msdk.dns.core.local
+com.tencent.msdk.dns.core.rest.share
+com.tencent.msdk.dns.core.stat
+

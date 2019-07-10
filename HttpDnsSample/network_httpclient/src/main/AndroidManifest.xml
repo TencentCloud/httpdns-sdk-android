@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.tencent.httpdns.network">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application>
+        <uses-library
+                android:name="org.apache.http.legacy"
+                android:required="false"/>
+    </application>
+</manifest>
