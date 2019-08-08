@@ -42,7 +42,6 @@ class DnsServiceInitProvider : ContentProvider() {
             .preLookupDomains(*PRE_LOOKUP_DOMAINS)
             .asyncLookupDomains(*ASYNC_LOOKUP_DOMAINS)
             .apply {
-                if (USE_UDP) udp() else http()
                 if (BLOCK_FIRST) blockFirst() else nonBlockFirst()
             }
             .executorSupplier(EXECUTOR_SUPPLIER)

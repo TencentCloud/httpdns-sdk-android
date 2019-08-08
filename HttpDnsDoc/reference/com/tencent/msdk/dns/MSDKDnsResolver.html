@@ -462,28 +462,6 @@ Summary:
             
             
             
-            
-            
-            String
-        </td>
-        <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/tencent/msdk/dns/MSDKDnsResolver.html#getAddrByName(java.lang.String, boolean)">getAddrByName</a></span>(String domain, boolean useHttp)
-        
-        <div class="jd-descrdiv">进行域名解析
- 接口区分本地网络栈进行解析
- 本地为IPv4 Only网络时, 最多返回一个IPv4结果IP
- 本地为IPv6 Only网络时, 最多返回一个IPv6结果IP
- 本地为Dual Stack网络时, 最多返回一个IPv4结果IP和一个IPv6结果IP</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">
-            
-            
-            
             static
             
             <a href="../../../../com/tencent/msdk/dns/MSDKDnsResolver.html">MSDKDnsResolver</a>
@@ -497,7 +475,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol">
             
             
@@ -515,24 +493,6 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">
-            
-            
-            
-            
-            
-            void
-        </td>
-        <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/tencent/msdk/dns/MSDKDnsResolver.html#init(android.content.Context, java.lang.String, boolean, int)">init</a></span>(Context context, String appkey, boolean debug, int timeout)
-        
-        <div class="jd-descrdiv">初始化SDK</div>
-  
-  </td></tr>
-
-
-	 
     <tr class=" api apilevel-" >
         <td class="jd-typecol">
             
@@ -543,25 +503,7 @@ Summary:
             void
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/tencent/msdk/dns/MSDKDnsResolver.html#init(android.content.Context, java.lang.String, boolean, int, boolean)">init</a></span>(Context context, String appkey, boolean debug, int timeout, boolean useHttp)
-        
-        <div class="jd-descrdiv">初始化SDK</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol">
-            
-            
-            
-            
-            
-            void
-        </td>
-        <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/tencent/msdk/dns/MSDKDnsResolver.html#init(android.content.Context, java.lang.String, java.lang.String, java.lang.String, boolean, int, boolean)">init</a></span>(Context context, String appkey, String dnsid, String dnskey, boolean debug, int timeout, boolean useHttp)
+        <span class="sympad"><a href="../../../../com/tencent/msdk/dns/MSDKDnsResolver.html#init(android.content.Context, java.lang.String, boolean, int)">init</a></span>(Context context, String appkey, boolean debug, int timeout)
         
         <div class="jd-descrdiv">初始化SDK</div>
   
@@ -957,59 +899,6 @@ From class
 </div>
 
 
-<a id="getAddrByName(java.lang.String, boolean)"></a>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getAddrByName</span>
-      <span class="normal">(String domain, boolean useHttp)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>进行域名解析
- 接口区分本地网络栈进行解析
- 本地为IPv4 Only网络时, 最多返回一个IPv4结果IP
- 本地为IPv6 Only网络时, 最多返回一个IPv6结果IP
- 本地为Dual Stack网络时, 最多返回一个IPv4结果IP和一个IPv6结果IP</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>domain</th>
-          <td>域名</td>
-        </tr>
-        <tr>
-          <th>useHttp</th>
-          <td>是否通过HTTP协议访问HTTPDNS服务进行域名解析, true为通过HTTP协议访问, false为通过UDP协议访问</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>解析结果, 以';'分隔, ';'前为IPv4, ';'后为IPv6, 对应位置没有解析结果则为'0'
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <a id="getInstance()"></a>
 
 <div class="jd-details api apilevel-"> 
@@ -1151,128 +1040,6 @@ From class
         <tr>
           <th>timeout</th>
           <td>域名解析请求超时时间, 单位为ms
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<a id="init(android.content.Context, java.lang.String, boolean, int, boolean)"></a>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">init</span>
-      <span class="normal">(Context context, String appkey, boolean debug, int timeout, boolean useHttp)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>初始化SDK</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>context</th>
-          <td><a href="https://developer.android.google.cn/reference/android/content/Context">Context</a>实例, SDK内部持有ApplicationContext用于监听网络切换等操作</td>
-        </tr>
-        <tr>
-          <th>appkey</th>
-          <td>即灯塔AppId, 从<a href="https://console.cloud.tencent.com/HttpDNS">腾讯云官网</a>申请获得</td>
-        </tr>
-        <tr>
-          <th>debug</th>
-          <td>是否输出调试日志, true为输出, false不输出, SDK默认仅将日志通过logcat输出, tag统一使用HTTPDNS</td>
-        </tr>
-        <tr>
-          <th>timeout</th>
-          <td>域名解析请求超时时间, 单位为ms</td>
-        </tr>
-        <tr>
-          <th>useHttp</th>
-          <td>是否通过HTTP协议访问HTTPDNS服务进行域名解析, true为通过HTTP协议访问, false为通过UDP协议访问
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<a id="init(android.content.Context, java.lang.String, java.lang.String, java.lang.String, boolean, int, boolean)"></a>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">init</span>
-      <span class="normal">(Context context, String appkey, String dnsid, String dnskey, boolean debug, int timeout, boolean useHttp)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>初始化SDK</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>context</th>
-          <td><a href="https://developer.android.google.cn/reference/android/content/Context">Context</a>实例, SDK内部持有ApplicationContext用于监听网络切换等操作</td>
-        </tr>
-        <tr>
-          <th>appkey</th>
-          <td>即灯塔AppId, 从<a href="https://console.cloud.tencent.com/HttpDNS">腾讯云官网</a>申请获得</td>
-        </tr>
-        <tr>
-          <th>dnsid</th>
-          <td>即HTTPDNS服务的授权Id, 从<a href="https://console.cloud.tencent.com/HttpDNS">腾讯云官网</a>申请获得</td>
-        </tr>
-        <tr>
-          <th>dnskey</th>
-          <td>即HTTPDNS服务的授权Id对应的加密密钥, 从<a href="https://console.cloud.tencent.com/HttpDNS">腾讯云官网</a>申请获得</td>
-        </tr>
-        <tr>
-          <th>debug</th>
-          <td>是否输出调试日志, true为输出, false不输出, SDK默认仅将日志通过logcat输出, tag统一使用HTTPDNS</td>
-        </tr>
-        <tr>
-          <th>timeout</th>
-          <td>域名解析请求超时时间, 单位为ms</td>
-        </tr>
-        <tr>
-          <th>useHttp</th>
-          <td>是否通过HTTP协议访问HTTPDNS服务进行域名解析, true为通过HTTP协议访问, false为通过UDP协议访问
 </td>
         </tr>
       </table>

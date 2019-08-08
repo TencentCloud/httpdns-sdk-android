@@ -55,12 +55,12 @@ object WebViewHelper {
 
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                     super.onPageStarted(view, url, favicon)
-                    DnsLog.d("WebViewClient load $url started")
+                    DnsLog.i("WebViewClient load $url started")
                 }
 
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
-                    DnsLog.d("WebViewClient load $url finished")
+                    DnsLog.i("WebViewClient load $url finished")
                 }
             }
         }

@@ -9,7 +9,7 @@ import com.tencent.msdk.dns.base.log.ILogNode
 import com.tencent.msdk.dns.core.LookupResult
 import com.tencent.msdk.dns.core.stat.StatisticsMerge
 
-internal const val LOG_LEVEL = Log.VERBOSE
+internal const val LOG_LEVEL = Log.WARN
 
 internal const val APP_ID = BuildConfig.APP_ID
 
@@ -33,8 +33,6 @@ internal val PRE_LOOKUP_DOMAINS =
     )
 
 internal val ASYNC_LOOKUP_DOMAINS = PRE_LOOKUP_DOMAINS
-
-internal const val USE_UDP = true
 
 internal const val BLOCK_FIRST = false
 

@@ -183,7 +183,7 @@
  return="com.tencent.msdk.dns.DnsConfig.Builder"
  abstract="false"
  native="false"
- synchronized="false"
+ synchronized="true"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -253,17 +253,6 @@
 <parameter name="executorSupplier" type="com.tencent.msdk.dns.base.executor.DnsExecutors.ExecutorSupplier">
 </parameter>
 </method>
-<method name="http"
- return="com.tencent.msdk.dns.DnsConfig.Builder"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
 <method name="initBuiltInReporters"
  return="com.tencent.msdk.dns.DnsConfig.Builder"
  abstract="false"
@@ -292,7 +281,7 @@
  return="com.tencent.msdk.dns.DnsConfig.Builder"
  abstract="false"
  native="false"
- synchronized="false"
+ synchronized="true"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -340,7 +329,7 @@
  return="com.tencent.msdk.dns.DnsConfig.Builder"
  abstract="false"
  native="false"
- synchronized="false"
+ synchronized="true"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -353,7 +342,7 @@
  return="com.tencent.msdk.dns.DnsConfig.Builder"
  abstract="false"
  native="false"
- synchronized="false"
+ synchronized="true"
  static="false"
  final="false"
  deprecated="not deprecated"
@@ -374,17 +363,6 @@
 >
 <parameter name="timeoutMills" type="int">
 </parameter>
-</method>
-<method name="udp"
- return="com.tencent.msdk.dns.DnsConfig.Builder"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 </method>
 <method name="userId"
  return="com.tencent.msdk.dns.DnsConfig.Builder"
@@ -598,21 +576,6 @@
 <parameter name="domain" type="java.lang.String">
 </parameter>
 </method>
-<method name="getAddrByName"
- return="java.lang.String"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="domain" type="java.lang.String">
-</parameter>
-<parameter name="useHttp" type="boolean">
-</parameter>
-</method>
 <method name="getInstance"
  return="com.tencent.msdk.dns.MSDKDnsResolver"
  abstract="false"
@@ -657,27 +620,6 @@
 </parameter>
 <parameter name="appkey" type="java.lang.String">
 </parameter>
-<parameter name="debug" type="boolean">
-</parameter>
-<parameter name="timeout" type="int">
-</parameter>
-<parameter name="useHttp" type="boolean">
-</parameter>
-</method>
-<method name="init"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="context" type="android.content.Context">
-</parameter>
-<parameter name="appkey" type="java.lang.String">
-</parameter>
 <parameter name="dnsid" type="java.lang.String">
 </parameter>
 <parameter name="dnskey" type="java.lang.String">
@@ -685,31 +627,6 @@
 <parameter name="debug" type="boolean">
 </parameter>
 <parameter name="timeout" type="int">
-</parameter>
-</method>
-<method name="init"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="context" type="android.content.Context">
-</parameter>
-<parameter name="appkey" type="java.lang.String">
-</parameter>
-<parameter name="dnsid" type="java.lang.String">
-</parameter>
-<parameter name="dnskey" type="java.lang.String">
-</parameter>
-<parameter name="debug" type="boolean">
-</parameter>
-<parameter name="timeout" type="int">
-</parameter>
-<parameter name="useHttp" type="boolean">
 </parameter>
 </method>
 </class>
