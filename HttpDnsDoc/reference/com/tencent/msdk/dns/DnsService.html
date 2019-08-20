@@ -415,7 +415,7 @@ Summary:
             <a href="../../../../com/tencent/msdk/dns/core/IpSet.html">IpSet</a>
         </td>
         <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/tencent/msdk/dns/DnsService.html#getAddrsByName(java.lang.String, boolean)">getAddrsByName</a></span>(String hostname, boolean useHttp)
+        <span class="sympad"><a href="../../../../com/tencent/msdk/dns/DnsService.html#getAddrsByName(java.lang.String, boolean)">getAddrsByName</a></span>(String hostname, boolean fallback2Local)
         
         <div class="jd-descrdiv">进行域名解析</div>
   
@@ -448,24 +448,6 @@ Summary:
             
             static
             
-            <a href="../../../../com/tencent/msdk/dns/core/IpSet.html">IpSet</a>
-        </td>
-        <td class="jd-linkcol" width="100%">
-        <span class="sympad"><a href="../../../../com/tencent/msdk/dns/DnsService.html#getAddrsByName(java.lang.String, boolean, boolean)">getAddrsByName</a></span>(String hostname, boolean useHttp, boolean fallback2Local)
-        
-        <div class="jd-descrdiv">进行域名解析</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol">
-            
-            
-            
-            static
-            
             void
         </td>
         <td class="jd-linkcol" width="100%">
@@ -477,7 +459,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol">
             
             synchronized
@@ -771,7 +753,7 @@ From class
         <a href="../../../../com/tencent/msdk/dns/core/IpSet.html">IpSet</a>
       </span>
       <span class="sympad">getAddrsByName</span>
-      <span class="normal">(String hostname, boolean useHttp)</span>
+      <span class="normal">(String hostname, boolean fallback2Local)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -792,8 +774,8 @@ From class
           <td>域名</td>
         </tr>
         <tr>
-          <th>useHttp</th>
-          <td>是否通过HTTP协议访问HTTPDNS服务进行域名解析, 为true时通过HTTP协议访问HTTPDNS服务进行域名解析, 否则通过UDP协议访问HTTPDNS服务进行域名解析</td>
+          <th>fallback2Local</th>
+          <td>访问HTTPDNS服务失败时, 是否fallback到LocalDNS进行域名解析</td>
         </tr>
       </table>
   </div>
@@ -848,68 +830,6 @@ From class
         <tr>
           <th>hostname</th>
           <td>域名</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li><code><a href="../../../../com/tencent/msdk/dns/core/IpSet.html">IpSet</a></code>实例, 即解析得到的Ip集合</li></ul>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>IllegalStateException</td>
-            <td>没有初始化时抛出
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<a id="getAddrsByName(java.lang.String, boolean, boolean)"></a>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-         
-         
-         
-        <a href="../../../../com/tencent/msdk/dns/core/IpSet.html">IpSet</a>
-      </span>
-      <span class="sympad">getAddrsByName</span>
-      <span class="normal">(String hostname, boolean useHttp, boolean fallback2Local)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>进行域名解析</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>hostname</th>
-          <td>域名</td>
-        </tr>
-        <tr>
-          <th>useHttp</th>
-          <td>是否通过HTTP协议访问HTTPDNS服务进行域名解析, 为true时通过HTTP协议访问HTTPDNS服务进行域名解析, 否则通过UDP协议访问HTTPDNS服务进行域名解析</td>
-        </tr>
-        <tr>
-          <th>fallback2Local</th>
-          <td>访问HTTPDNS服务失败时, 是否fallback到LocalDNS进行域名解析</td>
         </tr>
       </table>
   </div>

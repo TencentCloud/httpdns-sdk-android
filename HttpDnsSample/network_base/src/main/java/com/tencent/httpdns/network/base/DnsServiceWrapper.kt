@@ -28,7 +28,7 @@ object DnsServiceWrapper {
             return getAddrByNameByLocal(hostname)?.let { arrayOf(it) } ?: EMPTY_ADDRESSES
         }
         DnsLog.d("DnsServiceWrapper lookup by HttpDns")
-        val ipSet = DnsService.getAddrsByName(hostname, false)
+        val ipSet = DnsService.getAddrsByName(hostname)
         if (IpSet.EMPTY == ipSet) {
             return EMPTY_ADDRESSES
         }
