@@ -58,5 +58,5 @@ dependencies {
 
     implementation project(path: ':base')
 
-    implementation(name: 'HTTPDNS_Android_V3.1.2a_S15395', ext: 'aar')
+    implementation(name: 'HTTPDNS_Android_V3.1.3a_S15412', ext: 'aar')
 }
