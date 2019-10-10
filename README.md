@@ -82,6 +82,13 @@ App targetSdkVersion >= 28(Android 9.0)情况下，系统默认不允许HTTP网�
 </network-security-config>
 ```
 
+### 反混淆配置
+
+```
+# 灯塔
+-keep class com.tencent.beacon.** {*;}
+```
+
 ### 接口调用
 
 以下仅提供简单的接入演示，SDK接口的具体说明请参考接口文档（HttpDnsDoc目录），使用请参考使用Sample（HttpDnsSample目录）
