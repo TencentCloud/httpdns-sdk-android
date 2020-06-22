@@ -422,6 +422,19 @@
 <parameter name="fallback2Local" type="boolean">
 </parameter>
 </method>
+<method name="getDnsDetail"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+</method>
 <method name="init"
  return="void"
  abstract="false"
@@ -559,6 +572,19 @@
 <parameter name="domain" type="java.lang.String">
 </parameter>
 </method>
+<method name="getDnsDetail"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="domain" type="java.lang.String">
+</parameter>
+</method>
 <method name="getInstance"
  return="com.tencent.msdk.dns.MSDKDnsResolver"
  abstract="false"
@@ -610,6 +636,31 @@
 <parameter name="debug" type="boolean">
 </parameter>
 <parameter name="timeout" type="int">
+</parameter>
+</method>
+<method name="init"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="android.content.Context">
+</parameter>
+<parameter name="appkey" type="java.lang.String">
+</parameter>
+<parameter name="dnsid" type="java.lang.String">
+</parameter>
+<parameter name="dnskey" type="java.lang.String">
+</parameter>
+<parameter name="debug" type="boolean">
+</parameter>
+<parameter name="timeout" type="int">
+</parameter>
+<parameter name="useHttp" type="boolean">
 </parameter>
 </method>
 </class>
@@ -831,6 +882,19 @@
  visibility="public"
 >
 </constructor>
+<method name="getResultFromCache"
+ return="com.tencent.msdk.dns.core.LookupResult"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="lookupParams" type="LookupParameters">
+</parameter>
+</method>
 </class>
 <class name="LocalDns.Statistics"
  extends="com.tencent.msdk.dns.core.stat.AbsStatistics"
@@ -878,6 +942,19 @@
  visibility="public"
 >
 </constructor>
+<method name="getResultFromCache"
+ return="com.tencent.msdk.dns.core.LookupResult"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="lookupParams" type="&lt;any&gt;">
+</parameter>
+</method>
 </class>
 <class name="AbsRestDns.Statistics"
  extends="com.tencent.msdk.dns.core.stat.AbsStatistics"
@@ -1016,6 +1093,17 @@
  visibility="public"
 >
 </method>
+<method name="lookupGetEmptyResponse"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="lookupSuccess"
  return="boolean"
  abstract="false"
@@ -1059,6 +1147,16 @@
  visibility="public"
 >
 </field>
+<field name="isGetEmptyResponse"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 <field name="startLookupTimeMills"
  type="long"
  transient="false"
@@ -1088,6 +1186,17 @@
 <parameter name="context" type="android.content.Context">
 </parameter>
 </constructor>
+<method name="lookupGetEmptyResponse"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="lookupSuccess"
  return="boolean"
  abstract="false"
@@ -1140,6 +1249,17 @@
 <parameter name="ipSet" type="com.tencent.msdk.dns.core.IpSet">
 </parameter>
 </method>
+<method name="toJsonResult"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <field name="channel"
  type="java.lang.String"
  transient="false"
@@ -1182,6 +1302,16 @@
 </field>
 <field name="localDnsStat"
  type="com.tencent.msdk.dns.core.local.LocalDns.Statistics"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="lookupGetEmptyResponse"
+ type="boolean"
  transient="false"
  volatile="false"
  static="false"
