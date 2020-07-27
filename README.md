@@ -1,6 +1,38 @@
 # HTTPDNS Android接入文档
 
-[TOC]
+   * [HTTPDNS Android接入文档](#httpdns-android接入文档)
+      * [GitHub目录结构说明](#github目录结构说明)
+      * [HTTPDNS原理介绍](#httpdns原理介绍)
+      * [HTTPDNS SDK接入步骤](#httpdns-sdk接入步骤)
+         * [文件拷贝](#文件拷贝)
+         * [aar引入配置](#aar引入配置)
+         * [网络安全配置兼容](#网络安全配置兼容)
+         * [反混淆配置](#反混淆配置)
+         * [接口调用](#接口调用)
+            * [初始化](#初始化)
+            * [域名解析](#域名解析)
+            * [获取域名解析详细结果](#获取域名解析详细结果)
+         * [接入验证](#接入验证)
+            * [日志验证](#日志验证)
+            * [模拟LocalDNS劫持](#模拟localdns劫持)
+            * [抓包验证](#抓包验证)
+      * [HTTPDNS SDK接入HTTP网络访问实践](#httpdns-sdk接入http网络访问实践)
+         * [替换URL接入方式兼容](#替换url接入方式兼容)
+            * [HTTP兼容](#http兼容)
+            * [HTTPS兼容](#https兼容)
+         * [本地使用HTTP代理](#本地使用http代理)
+            * [替换URL接入方式](#替换url接入方式)
+            * [替换DNS实现方式](#替换dns实现方式)
+            * [判断本地是否使用HTTP代理](#判断本地是否使用http代理)
+
+## GitHub目录结构说明
+
+| 目录名称       | 说明           | 适用范围  |
+| ------------- |-------------| -------------|
+| HttpDNSLibs | HttpDNS Android SDK库目录 | 所有业务 |
+| HttpDNS Android接入文档.pdf | HttpDNS Android接入文档 | 所有业务 |
+| README.md | HttpDNS Android客户端接入文档 | 所有业务 |
+| CHANGELOG.md | HttpDNS Android SDK历史版本修改记录 | SDK开发维护人员 |
 
 ## HTTPDNS原理介绍
 
@@ -141,6 +173,26 @@ val ipSet = DnsService.getAddrsByName(/* hostname */hostname, /* useHttp */false
 // NOTE: useHttp默认为false
 val ipSet = DnsService.getAddrsByName(/* hostname */hostname)
 ```
+
+#### 获取域名解析详细结果
+
+```kotlin
+// 从缓存中获取域名解析的详细结果
+// NOTE: ** 该接口不会触发域名解析的网络请求，只会从缓存中获取详细结果 **
+// 所以该接口一般需要在调用DnsService.getAddrsByName发起网络请求获取结果后调用
+// 返回的结果为json
+// {
+//   "v4_ips":"1.1.1.1,2.2.2.2,3.3.3.3",    /* ipv4的地址，逗号分隔 */
+//   "v4_ttl":"100",                        /* ipv4的解析有效期ttl */
+//   "v4_client_ip":"9.9.9.9"               /* ipv4的客户端外网IP */
+//   "v6_ips":"1001::1,2002::2,3003::3",    /* ipv6的地址，逗号分隔 */
+//   "v6_ttl":"100",                        /* ipv6的解析有效期ttl */
+//   "v6_client_ip":"9009::9"               /* ipv6的客户端外网IP */
+// }
+val dnsDetail = DnsService.getDnsDetail(/* hostname */hostname)
+```
+
+
 
 ### 接入验证
 

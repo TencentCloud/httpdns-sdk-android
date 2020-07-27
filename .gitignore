@@ -84,4 +84,4 @@ lint/tmp/
 # lint/reports/
 
 # Mac
-.DS_Store/
+.DS_Store
