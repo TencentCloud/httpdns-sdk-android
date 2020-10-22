@@ -1,3 +1,11 @@
+## 3.2.5
+
+### Bug Fixes
+
+1. HTTP的接收完成判断调整
+2. 对于字符指针使用malloc代替new
+
+
 ## 3.2.4
 
 ### Bug Fixes
