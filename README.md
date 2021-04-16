@@ -150,7 +150,7 @@ DnsConfig
 	// 从<a href="https://console.cloud.tencent.com/HttpDNS">腾讯云官网</a>申请获得
 	.dnsKey(DNS_KEY)
 	// 设置域名解析请求超时时间, 单位ms
-	// 默认为1000
+	// 默认为2000毫秒
 	.timeoutMills(TIMEOUT_MILLS)
 	.build()
 	.let { 

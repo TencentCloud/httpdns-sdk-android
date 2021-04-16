@@ -19,7 +19,7 @@ internal const val DNS_ID = BuildConfig.DNS_ID
 
 internal const val DNS_KEY = BuildConfig.DNS_KEY
 
-internal const val TIMEOUT_MILLS = 1000
+internal const val TIMEOUT_MILLS = 2000
 
 internal val PROTECTED_DOMAINS = TENCENT_DOMAINS
 
