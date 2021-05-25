@@ -1,1 +1,3 @@
-include ':app', ':base', ':network_base', ':network_retrofit', ':network_okhttp', ':network_httpurlconnection', ':network_httpclient', ':network_volley'
+include ':HTTPDNS_Android_v3.6.0a_release'
+include ':app'
+rootProject.name = "dnsTest"
