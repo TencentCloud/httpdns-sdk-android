@@ -19,8 +19,19 @@ class MainActivity : AppCompatActivity() {
         val btn = findViewById<Button>(R.id.button)
         val resultText = findViewById<TextView>(R.id.resultText)
 
-        // SDK初始化 请输入相应的配置信息
-        MSDKDnsResolver.getInstance().init(this, appkey, dnsid, dnskey, dnsIp debug, timeout, channel, token);
+        /**
+         * 初始化HTTPDNS（自选加密方式）
+         * @param context 应用上下文，最好传入ApplicationContext
+         * @param appkey 业务appkey，即SDK AppID，腾讯云官网（https://console.cloud.tencent.com/httpdns）申请获得，用于上报
+         * @param dnsid dns解析id，即授权id，腾讯云官网（https://console.cloud.tencent.com/httpdns）申请获得，用于域名解析鉴权
+         * @param dnskey dns解析key，即授权id对应的key(加密密钥)，在申请SDK后的邮箱里，腾讯云官网（https://console.cloud.tencent.com/httpdns）申请获得，用于域名解析鉴权
+         * @param dnsIp 由外部传入的dnsIp，如"119.29.29.99"，从<a href="https://cloud.tencent.com/document/product/379/17655"></a> 文档提供的IP为准
+         * @param debug 是否开启debug日志，true为打开，false为关闭，建议测试阶段打开，正式上线时关闭
+         * @param timeout dns请求超时时间，单位ms，建议设置1000
+         * @param channel 设置channel，可选：DesHttp(默认), AesHttp, Https
+         * @param token 腾讯云官网（https://console.cloud.tencent.com/httpdns）申请获得，用于HTTPS校验
+         */
+        MSDKDnsResolver.getInstance().init(this, appkey, dnsid, dnskey, "119.29.29.99", true, 1000, "Https", token);
 
         btn.setOnClickListener {
             val hostname = textInput.getText().toString();
