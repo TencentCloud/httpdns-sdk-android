@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         val btnAsyncBatch = findViewById<Button>(R.id.buttonAsyncBatch)
         val resultText = findViewById<TextView>(R.id.resultText)
 
-        MSDKDnsResolver.getInstance().init(this, "appkey", "dnsid", "dnskey", "119.29.29.99", true, 1000, "Https", "token");
+        MSDKDnsResolver.getInstance()
+            .init(this, "appkey", "dnsid", "dnskey", "119.29.29.98", true, 1000, true);
 
         //  域名解析
         btn.setOnClickListener {
@@ -73,23 +74,23 @@ class MainActivity : AppCompatActivity() {
 
         //  异步回调
         MSDKDnsResolver.getInstance()
-                .setHttpDnsResponseObserver { tag, domain, ipResultSemicolonSep ->
-                    Log.d(TAG, "tag:" + tag);
-                    val elapse = System.currentTimeMillis() - tag.toLong();
-                    val lookedUpResult =
-                            "[[getAddrByNameAsync]]:ASYNC:::" + ipResultSemicolonSep +
-                                    ", domain:" + domain + ", tag:" + tag +
-                                    ", elapse:" + elapse
-                    Log.d(TAG, "HTTPDNS_Async：" + lookedUpResult);
-                    resultText.setText("解析结果为：" + ipResultSemicolonSep + ", elapse:" + elapse);
-                }
+            .setHttpDnsResponseObserver { tag, domain, ipResultSemicolonSep ->
+                Log.d(TAG, "tag:" + tag);
+                val elapse = System.currentTimeMillis() - tag.toLong();
+                val lookedUpResult =
+                    "[[getAddrByNameAsync]]:ASYNC:::" + ipResultSemicolonSep +
+                            ", domain:" + domain + ", tag:" + tag +
+                            ", elapse:" + elapse
+                Log.d(TAG, "HTTPDNS_Async：" + lookedUpResult);
+                resultText.setText("解析结果为：" + ipResultSemicolonSep + ", elapse:" + elapse);
+            }
 
         //  异步解析
         btnAsync.setOnClickListener(View.OnClickListener {
             val hostname = textInput.getText().toString();
 
             MSDKDnsResolver.getInstance()
-                    .getAddrByNameAsync(hostname, System.currentTimeMillis().toString())
+                .getAddrByNameAsync(hostname, System.currentTimeMillis().toString())
         })
 
         // 异步解析-批量
@@ -97,9 +98,8 @@ class MainActivity : AppCompatActivity() {
             val hostname = textInput.getText().toString();
 
             MSDKDnsResolver.getInstance()
-                    .getAddrsByNameAsync(hostname, System.currentTimeMillis().toString())
+                .getAddrsByNameAsync(hostname, System.currentTimeMillis().toString())
         })
-
 
     }
 }
