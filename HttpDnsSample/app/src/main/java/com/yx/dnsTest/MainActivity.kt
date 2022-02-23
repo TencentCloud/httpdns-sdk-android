@@ -65,9 +65,10 @@ class MainActivity : AppCompatActivity() {
             Thread(Runnable {
                 val start_time = System.currentTimeMillis();
                 val ips = MSDKDnsResolver.getInstance().getAddrsByName(hostname);
+                val end_time = System.currentTimeMillis() - start_time;
                 runOnUiThread {
                     Log.d(TAG, "HTTPDNS：" + hostname + ": " + ips)
-                    resultText.setText("解析结果为：" + ips + ", elapse:" + (System.currentTimeMillis() - start_time));
+                    resultText.setText("解析结果为：" + ips + ", 耗时:" + end_time);
                 }
             }).start()
         }
