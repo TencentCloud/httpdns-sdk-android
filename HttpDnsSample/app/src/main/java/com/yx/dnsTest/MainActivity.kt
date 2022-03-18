@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.tencent.msdk.dns.DnsConfig
 import com.tencent.msdk.dns.MSDKDnsResolver
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +24,18 @@ class MainActivity : AppCompatActivity() {
         val btnAsyncBatch = findViewById<Button>(R.id.buttonAsyncBatch)
         val resultText = findViewById<TextView>(R.id.resultText)
 
-        MSDKDnsResolver.getInstance()
-            .init(this, "appkey", "dnsid", "dnskey", "119.29.29.98", true, 1000, true);
+        // 配置项
+        val dnsConfigBuilder = DnsConfig.Builder()
+            .dnsId("dnsId")
+            .dnsIp("119.29.29.98")
+            .desHttp()
+            .dnsKey("dnsKey")
+            .logLevel(Log.VERBOSE)
+            .timeoutMills(1000)
+            .preLookupDomains("xxx.com")
+            .enableReport(true)
+            .build()
+        MSDKDnsResolver.getInstance().init(this, dnsConfigBuilder)
 
         //  域名解析
         btn.setOnClickListener {
