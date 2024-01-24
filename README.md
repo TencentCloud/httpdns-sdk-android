@@ -13,13 +13,11 @@
 
 ### 文件拷贝
 
-将 HttpDnsLibs 目录下的 aar 包及 jar 拷贝至项目工程中 libs 相应位置
+将 HttpDnsLibs 目录下的 aar 包拷贝至项目工程中 libs 相应位置
 
-HttpDnsLibs 目录下包含两个包：
-
-- 文件名以 HTTPDNS 为前缀的 aar 包（HTTPDNS_Android_xxxx.aar）为 HTTPDNS SDK
-- 文件名以 beacon 为前缀的 jar 包（beacon-android-xxxx.jar）为灯塔 SDK
-  - HTTPDNS SDK 使用灯塔 SDK 进行数据上报
+HttpDnsLibs 目录下：
+- 默认 aar 包（HTTPDNS_Android_xxxx.aar）为 HTTPDNS 国内站 SDK
+- 文件名以 intl 为后缀的 aar 包（HTTPDNS_Android_xxxx_intl.aar）为 HTTPDNS 国际版 SDK
 
 ### aar 引入配置
 
@@ -73,13 +71,6 @@ App targetSdkVersion >= 28(Android 9.0)情况下，系统默认不允许 HTTP �
         <domain includeSubdomains="false">119.29.29.98</domain>
     </domain-config>
 </network-security-config>
-```
-
-### 反混淆配置
-
-```
-# 灯塔
--keep class com.tencent.beacon.** {*;}
 ```
 
 ## 初始化
