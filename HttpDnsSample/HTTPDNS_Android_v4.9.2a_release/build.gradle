@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('HTTPDNS_Android_v4.9.2a_release.aar'))

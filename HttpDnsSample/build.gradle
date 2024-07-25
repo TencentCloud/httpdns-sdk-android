@@ -2,7 +2,7 @@
 buildscript {
     ext.kotlin_version = "1.3.72"
 
-    ext.subVersionName = '4.9.1'
+    ext.subVersionName = '4.9.2'
     def versionArr = subVersionName.toString().split(/\D/)
     ext.subVersionCode = Integer.valueOf(String.format('%d%02d%02d',
             versionArr[0].toInteger(), versionArr[1].toInteger(), versionArr[2].toInteger()))
