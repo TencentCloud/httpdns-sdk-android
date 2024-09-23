@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         // 配置项
         val dnsConfigBuilder = DnsConfig.Builder()
             .dnsId("dnsId")
-            .dnsIp("119.29.29.98")
+            .dnsIp("x.x.x.x")
             .desHttp()
             .dnsKey("dnsKey")
             .logLevel(Log.VERBOSE)
